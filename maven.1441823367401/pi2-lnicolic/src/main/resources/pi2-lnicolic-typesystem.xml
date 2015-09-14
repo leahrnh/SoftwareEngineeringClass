@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+    <name>pi2-lnicolic-typesystem</name>
+    <description/>
+    <version>1.0</version>
+    <vendor/>
+  <types>
+    <typeDescription>
+      <name>Sentence</name>
+      <description>Annotates the boundaries of a sentence from the input text.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>Question</name>
+      <description>Annotates the single question Sentence in the input.</description>
+      <supertypeName>Sentence</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>Answer</name>
+      <description>Annotates answer Sentences in the input.</description>
+      <supertypeName>Sentence</supertypeName>
+      <features>
+        <featureDescription>
+          <name>correct</name>
+          <description>whether the answer is a correct answer to the question</description>
+          <rangeTypeName>uima.cas.Boolean</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>score</name>
+          <description>a number between 0 and 1 representing how well the Answer matches its associated Question.</description>
+          <rangeTypeName>uima.cas.Float</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>Token</name>
+      <description>Annotates each token span in each Sentence by tokenizing their strings.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>NGram</name>
+      <description>Annotates sequences of tokens in a Sentence</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>OneGram</name>
+      <description>Type of NGram for holdings sequences of 1 token.</description>
+      <supertypeName>NGram</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>TwoGram</name>
+      <description>Type of NGram for holdings sequences of 2 tokens.</description>
+      <supertypeName>NGram</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>ThreeGram</name>
+      <description>Type of NGram for holdings sequences of 3 tokens.</description>
+      <supertypeName>NGram</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>Evaluation</name>
+      <description>Ranks Answers by score and measures performance.</description>
+      <supertypeName>uima.cas.TOP</supertypeName>
+      <features>
+        <featureDescription>
+          <name>n</name>
+          <description>The number of correct answers in the input.</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+  </types>
+</typeSystemDescription>
