@@ -10,7 +10,7 @@ import org.apache.uima.cas.impl.TypeImpl;
 import org.apache.uima.cas.Type;
 
 /** Type of NGram for holdings sequences of 1 token.
- * Updated by JCasGen Mon Sep 14 09:21:45 EDT 2015
+ * Updated by JCasGen Mon Sep 14 17:13:57 EDT 2015
  * @generated */
 public class OneGram_Type extends NGram_Type {
   /** @generated 

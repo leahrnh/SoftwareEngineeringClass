@@ -8,7 +8,7 @@
     <typeDescription>
       <name>Sentence</name>
       <description>Annotates the boundaries of a sentence from the input text.</description>
-      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <supertypeName>PI2Annotation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>Question</name>
@@ -35,12 +35,12 @@
     <typeDescription>
       <name>Token</name>
       <description>Annotates each token span in each Sentence by tokenizing their strings.</description>
-      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <supertypeName>PI2Annotation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>NGram</name>
       <description>Annotates sequences of tokens in a Sentence</description>
-      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <supertypeName>PI2Annotation</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>OneGram</name>
@@ -58,14 +58,19 @@
       <supertypeName>NGram</supertypeName>
     </typeDescription>
     <typeDescription>
-      <name>Evaluation</name>
-      <description>Ranks Answers by score and measures performance.</description>
-      <supertypeName>uima.cas.TOP</supertypeName>
+      <name>PI2Annotation</name>
+      <description>An abstract Annotation encompassing all the Annotations in the PI2 project.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
       <features>
         <featureDescription>
-          <name>n</name>
-          <description>The number of correct answers in the input.</description>
-          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+          <name>confidence</name>
+          <description>the confidence score that the annotation is accurate</description>
+          <rangeTypeName>uima.cas.Float</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>annotator</name>
+          <description>the name of the annotator component that created this annotation.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
       </features>
     </typeDescription>

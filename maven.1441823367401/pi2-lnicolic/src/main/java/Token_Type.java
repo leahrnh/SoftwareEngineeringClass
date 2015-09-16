@@ -11,9 +11,9 @@ import org.apache.uima.cas.Type;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** Annotates each token span in each Sentence by tokenizing their strings.
- * Updated by JCasGen Mon Sep 14 09:21:45 EDT 2015
+ * Updated by JCasGen Mon Sep 14 17:13:57 EDT 2015
  * @generated */
-public class Token_Type extends Annotation_Type {
+public class Token_Type extends PI2Annotation_Type {
   /** @generated 
    * @return the generator for this type
    */

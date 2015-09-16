@@ -10,10 +10,10 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** Annotates each token span in each Sentence by tokenizing their strings.
- * Updated by JCasGen Mon Sep 14 09:21:45 EDT 2015
+ * Updated by JCasGen Mon Sep 14 17:13:57 EDT 2015
  * XML source: /Users/leah/Tulip/CMU/Fall2015/Software Engineering/SoftwareEngineeringClass/maven.1441823367401/pi2-lnicolic/src/main/resources/pi2-lnicolic-typesystem.xml
  * @generated */
-public class Token extends Annotation {
+public class Token extends PI2Annotation {
   /** @generated
    * @ordered 
    */

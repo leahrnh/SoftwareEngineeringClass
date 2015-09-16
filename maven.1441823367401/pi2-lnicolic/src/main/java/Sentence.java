@@ -10,10 +10,10 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** Annotates the boundaries of a sentence from the input text.
- * Updated by JCasGen Mon Sep 14 09:21:45 EDT 2015
+ * Updated by JCasGen Mon Sep 14 17:13:57 EDT 2015
  * XML source: /Users/leah/Tulip/CMU/Fall2015/Software Engineering/SoftwareEngineeringClass/maven.1441823367401/pi2-lnicolic/src/main/resources/pi2-lnicolic-typesystem.xml
  * @generated */
-public class Sentence extends Annotation {
+public class Sentence extends PI2Annotation {
   /** @generated
    * @ordered 
    */

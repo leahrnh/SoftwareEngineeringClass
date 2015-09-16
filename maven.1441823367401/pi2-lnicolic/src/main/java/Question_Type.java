@@ -10,7 +10,7 @@ import org.apache.uima.cas.impl.TypeImpl;
 import org.apache.uima.cas.Type;
 
 /** Annotates the single question Sentence in the input.
- * Updated by JCasGen Mon Sep 14 09:21:45 EDT 2015
+ * Updated by JCasGen Mon Sep 14 17:13:57 EDT 2015
  * @generated */
 public class Question_Type extends Sentence_Type {
   /** @generated 

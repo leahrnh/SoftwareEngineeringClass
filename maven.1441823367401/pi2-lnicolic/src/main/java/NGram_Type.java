@@ -11,9 +11,9 @@ import org.apache.uima.cas.Type;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** Annotates sequences of tokens in a Sentence
- * Updated by JCasGen Mon Sep 14 09:21:45 EDT 2015
+ * Updated by JCasGen Mon Sep 14 17:13:57 EDT 2015
  * @generated */
-public class NGram_Type extends Annotation_Type {
+public class NGram_Type extends PI2Annotation_Type {
   /** @generated 
    * @return the generator for this type
    */
