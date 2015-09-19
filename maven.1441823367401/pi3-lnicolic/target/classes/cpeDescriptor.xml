@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<cpeDescription>
-	<collectionReader>
-		<!-- Write your Collection Reader description here -->
-	</collectionReader>
-	<casProcessors casPoolSize="1" processingUnitThreadCount="1">
-		<casProcessor deployment="integrated" name="your Aggregated Analysis Engine">
-			<!-- Write your Analysis Engine description here -->
-		</casProcessor>
-		<casProcessor deployment="integrated" name="your CAS Consumer">
-			<!-- Write your CAS Consumer description here -->
-		</casProcessor>
-	</casProcessors>
+<cpeDescription xmlns="http://uima.apache.org/resourceSpecifier">
+    <casProcessors casPoolSize="3" processingUnitThreadCount="1"/>
+    <cpeConfig>
+        <numToProcess>-1</numToProcess>
+        <deployAs>immediate</deployAs>
+        <checkpoint batch="0" time="300000ms"/>
+        <timerImpl/>
+    </cpeConfig>
 </cpeDescription>

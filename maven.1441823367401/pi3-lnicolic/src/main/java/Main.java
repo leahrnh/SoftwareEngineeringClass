@@ -15,6 +15,9 @@ public class Main {
     // 4. Run the CPE.
 
     // Implement your code from here.
+	  int n = Integer.parseInt(args[0]);
+	  String inputDir = args[1];
+	  String outputDir = args[2];
 
   }
 
