@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
-  <primitive>true</primitive>  
-  <annotatorImplementationName>TestElementAnnotator</annotatorImplementationName>
+  <primitive>false</primitive>  
+  <delegateAnalysisEngineSpecifiers>
+    <delegateAnalysisEngine key="QuestionAnnotator">
+      <import name="annotators.QuestionAnnotator"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="AnswerAnnotator">
+      <import name="annotators.AnswerAnnotator"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="InputDocumentAnnotator">
+      <import name="annotators.InputDocumentAnnotator"/>
+    </delegateAnalysisEngine>
+  </delegateAnalysisEngineSpecifiers>
   <analysisEngineMetaData>
     <name>TestElementAnnotatorDescriptor</name>
     <description/>
@@ -10,19 +20,19 @@
     <vendor/>
     <configurationParameters/>
     <configurationParameterSettings/>
-    <typeSystemDescription>
-      <imports>
-        <import name="typeSystem"/>
-      </imports>
-    </typeSystemDescription>
-    <typePriorities/>
+    <flowConstraints>
+      <fixedFlow>
+        <node>QuestionAnnotator</node>
+        <node>AnswerAnnotator</node>
+        <node>InputDocumentAnnotator</node>
+      </fixedFlow>
+    </flowConstraints>
     <fsIndexCollection/>
     <capabilities>
       <capability>
         <inputs/>
         <outputs>
-          <type allAnnotatorFeatures="true">type.Question</type>
-          <type allAnnotatorFeatures="true">type.Answer</type>
+          <type allAnnotatorFeatures="true">type.InputDocument</type>
         </outputs>
         <languagesSupported/>
       </capability>
