@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
-  <primitive>true</primitive>  <annotatorImplementationName>TestElementAnnotator</annotatorImplementationName>
+  <primitive>false</primitive>  
+  <delegateAnalysisEngineSpecifiers>
+    <delegateAnalysisEngine key="QuestionAnnotator">
+      <import name="QuestionAnnotator"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="AnswerAnnotator">
+      <import name="AnswerAnnotator"/>
+    </delegateAnalysisEngine>
+  </delegateAnalysisEngineSpecifiers>
   <analysisEngineMetaData>
     <name>TestElementAnnotatorDescriptor</name>
     <description/>
@@ -9,12 +17,12 @@
     <vendor/>
     <configurationParameters/>
     <configurationParameterSettings/>
-    <typeSystemDescription>
-      <imports>
-        <import name="typeSystem"/>
-      </imports>
-    </typeSystemDescription>
-    <typePriorities/>
+    <flowConstraints>
+      <fixedFlow>
+        <node>QuestionAnnotator</node>
+        <node>AnswerAnnotator</node>
+      </fixedFlow>
+    </flowConstraints>
     <fsIndexCollection/>
     <capabilities>
       <capability>
