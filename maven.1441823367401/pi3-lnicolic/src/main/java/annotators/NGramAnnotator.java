@@ -103,7 +103,7 @@ public class NGramAnnotator extends JCasAnnotator_ImplBase {
   		ngram.setN(n);
   		ngram.setTokens(ngramTokens);
   		ngram.setBegin(((Token) ngramTokens.get(0)).getBegin());
-  		ngram.setBegin(((Token) ngramTokens.get(n-1)).getEnd());
+  		ngram.setEnd(((Token) ngramTokens.get(n-1)).getEnd());
   		ngram.addToIndexes();
   		ngrams.set(i, ngram);
   		

@@ -1,9 +1,19 @@
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.io.Writer;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.Charset;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -22,35 +32,38 @@ import org.apache.uima.resource.ResourceProcessException;
 
 import type.Answer;
 import type.InputDocument;
+import type.Ngram;
 import type.Question;
 
 
 public class Consumer extends CasConsumer_ImplBase {
 	
 	private int mDocNum;
-	private File mOutputDir = new File("src/main/resources/outputData");
+	private File mOutputDir;
 	
 	public void initialize() throws ResourceInitializationException {
 		mDocNum = 0;
-		//setup output directory?
+		mOutputDir = new File("src/main/resources/outputData");
+		if (!mOutputDir.exists()) {
+		      mOutputDir.mkdirs();
+		}
 	}
 
 	@Override
 	public void processCas(CAS aCAS) throws ResourceProcessException {
-		  String modelFileName = null;
+		  //String modelFileName = null;
 
 		  JCas jcas;
-		  System.out.println("starting consumer process");
 		  try {
-			  System.out.println("in try loop");
-		    jcas = aCAS.getJCas();
-		    FSIndex docIndex = jcas.getAnnotationIndex(InputDocument.type);
-		    
-		    //iterate over documents
-		    Iterator docIter = docIndex.iterator();
-		    System.out.println("docIter: " + docIter.toString());
-		    while (docIter.hasNext()) {
-		    	System.out.println("docIter hasNext");
+		      jcas = aCAS.getJCas();
+		  } catch (CASException e) {
+		      throw new ResourceProcessException(e);
+		  }
+		  
+		  FSIterator docIter = jcas.getAnnotationIndex(InputDocument.type).iterator();
+		  File outFile = null;
+		  
+		  while (docIter.hasNext()) {
 		    	InputDocument doc = (InputDocument) docIter.next();
 		    	Question question = doc.getQuestion();
 		    	
@@ -58,13 +71,11 @@ public class Consumer extends CasConsumer_ImplBase {
 		    	int numCorrect = 0;
 		    	//iterate through answers, calculating a score for each one 
 		    	for (int i=0;i<doc.getAnswers().size();i++) {
-		    		System.out.println("going through answers");
 		    		Answer answer = doc.getAnswers(i);
 		    		int matches = 0;
 		    		//iterate through ngrams, comparing them to the ones in the question
-		    		System.out.println(answer);
 		    		for (int j=0;j<answer.getNgrams().size();j++) {
-		    			String ngram = answer.getNgrams(i).getCoveredText();
+		    			String ngram = answer.getNgrams(j).getCoveredText();
 		    			if (matches(ngram, question)) {
 		    				matches++;
 		    			}
@@ -90,38 +101,54 @@ public class Consumer extends CasConsumer_ImplBase {
 		    		}
 		    	}
 		    	double precision = truePos / numCorrect;
-		    	System.out.println("precision: " + precision);
 		    	
 		    	
 		    	//write file
-		    	System.out.println("writing file");
+		    	/*
+		    	System.out.println("\n\n");
 		    	mDocNum++;
-		    	PrintWriter writer = new PrintWriter(mOutputDir+"/a"+mDocNum+".txt", "UTF-8");
-		    	writer.println(precision);
-		    	for (Answer answer : answersList) {
-		    		writer.println(answer.getScore());
-		    	}
-		    	writer.close();
+		    	PrintWriter writer;
+				try {
+					writer = new PrintWriter(mOutputDir+"/a"+mDocNum+".txt", "UTF-8");
+			    	writer.println(precision);
+			    	System.out.println(precision);
+			    	for (Answer answer : answersList) {
+			    		writer.println(answer.getScore());
+			    		System.out.println(answer.getScore());
+			    	}
+			    	writer.close();
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (UnsupportedEncodingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} */
+				
+		    	try {
+
+					String content = "This is the content to write into file";
+
+					File file = new File("src/main/resources/outputData/test.txt");
+					System.out.println(file.getAbsolutePath());
+
+					// if file doesn't exists, then create it
+					if (!file.exists()) {
+						file.createNewFile();
+					}
+
+					FileWriter fw = new FileWriter(file.getAbsoluteFile());
+					BufferedWriter bw = new BufferedWriter(fw);
+					bw.write(content);
+					bw.close();
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 		    	
 		    	
 		    }
-		    
-		    
-		    
-		  } catch (CASException e) {
-			  System.err.println("CAS Exception");
-		    throw new ResourceProcessException(e);
-		  } catch (FileNotFoundException e) {
-			  System.err.println("File not found exception");
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			System.err.println("UnsupportedEncodingException");
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		  
-		 System.out.println("finished consumer");
+
 
 	}
 	

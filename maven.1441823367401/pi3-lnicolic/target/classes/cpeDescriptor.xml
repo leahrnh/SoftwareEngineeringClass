@@ -10,7 +10,7 @@
     <casProcessors casPoolSize="3" processingUnitThreadCount="1">
     <casProcessor deployment="integrated" name="TestElementAnnotatorDescriptor">
         <descriptor>
-            <import location="aae/TestElementAnnotator.xml"/>
+            <import location="aae/TestElementAnnotatorAAE.xml"/>
         </descriptor>
             <deploymentParameters/>
         <errorHandling>
