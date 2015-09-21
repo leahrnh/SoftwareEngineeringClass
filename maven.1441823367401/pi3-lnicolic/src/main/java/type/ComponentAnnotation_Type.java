@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** A parent annotation which expects individual annotation types to inherit from.
- * Updated by JCasGen Wed Sep 16 15:17:38 EDT 2015
+ * Updated by JCasGen Mon Sep 21 11:36:06 EDT 2015
  * @generated */
 public class ComponentAnnotation_Type extends Annotation_Type {
   /** @generated 
@@ -93,6 +93,57 @@ public class ComponentAnnotation_Type extends Annotation_Type {
     ll_cas.ll_setDoubleValue(addr, casFeatCode_score, v);}
     
   
+ 
+  /** @generated */
+  final Feature casFeat_ngrams;
+  /** @generated */
+  final int     casFeatCode_ngrams;
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
+  public int getNgrams(int addr) {
+        if (featOkTst && casFeat_ngrams == null)
+      jcas.throwFeatMissing("ngrams", "type.ComponentAnnotation");
+    return ll_cas.ll_getRefValue(addr, casFeatCode_ngrams);
+  }
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
+  public void setNgrams(int addr, int v) {
+        if (featOkTst && casFeat_ngrams == null)
+      jcas.throwFeatMissing("ngrams", "type.ComponentAnnotation");
+    ll_cas.ll_setRefValue(addr, casFeatCode_ngrams, v);}
+    
+   /** @generated
+   * @param addr low level Feature Structure reference
+   * @param i index of item in the array
+   * @return value at index i in the array 
+   */
+  public int getNgrams(int addr, int i) {
+        if (featOkTst && casFeat_ngrams == null)
+      jcas.throwFeatMissing("ngrams", "type.ComponentAnnotation");
+    if (lowLevelTypeChecks)
+      return ll_cas.ll_getRefArrayValue(ll_cas.ll_getRefValue(addr, casFeatCode_ngrams), i, true);
+    jcas.checkArrayBounds(ll_cas.ll_getRefValue(addr, casFeatCode_ngrams), i);
+  return ll_cas.ll_getRefArrayValue(ll_cas.ll_getRefValue(addr, casFeatCode_ngrams), i);
+  }
+   
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param i index of item in the array
+   * @param v value to set
+   */ 
+  public void setNgrams(int addr, int i, int v) {
+        if (featOkTst && casFeat_ngrams == null)
+      jcas.throwFeatMissing("ngrams", "type.ComponentAnnotation");
+    if (lowLevelTypeChecks)
+      ll_cas.ll_setRefArrayValue(ll_cas.ll_getRefValue(addr, casFeatCode_ngrams), i, v, true);
+    jcas.checkArrayBounds(ll_cas.ll_getRefValue(addr, casFeatCode_ngrams), i);
+    ll_cas.ll_setRefArrayValue(ll_cas.ll_getRefValue(addr, casFeatCode_ngrams), i, v);
+  }
+ 
 
 
 
@@ -112,6 +163,10 @@ public class ComponentAnnotation_Type extends Annotation_Type {
  
     casFeat_score = jcas.getRequiredFeatureDE(casType, "score", "uima.cas.Double", featOkTst);
     casFeatCode_score  = (null == casFeat_score) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_score).getCode();
+
+ 
+    casFeat_ngrams = jcas.getRequiredFeatureDE(casType, "ngrams", "uima.cas.FSArray", featOkTst);
+    casFeatCode_ngrams  = (null == casFeat_ngrams) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_ngrams).getCode();
 
   }
 }

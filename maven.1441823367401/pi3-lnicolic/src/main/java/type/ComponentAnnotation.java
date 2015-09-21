@@ -7,11 +7,12 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.JCasRegistry;
 import org.apache.uima.jcas.cas.TOP_Type;
 
+import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** A parent annotation which expects individual annotation types to inherit from.
- * Updated by JCasGen Wed Sep 16 15:17:38 EDT 2015
+ * Updated by JCasGen Mon Sep 21 11:36:06 EDT 2015
  * XML source: /Users/leah/Tulip/CMU/Fall2015/Software Engineering/SoftwareEngineeringClass/maven.1441823367401/pi3-lnicolic/src/main/resources/typeSystem.xml
  * @generated */
 public class ComponentAnnotation extends Annotation {
@@ -118,6 +119,50 @@ public class ComponentAnnotation extends Annotation {
     if (ComponentAnnotation_Type.featOkTst && ((ComponentAnnotation_Type)jcasType).casFeat_score == null)
       jcasType.jcas.throwFeatMissing("score", "type.ComponentAnnotation");
     jcasType.ll_cas.ll_setDoubleValue(addr, ((ComponentAnnotation_Type)jcasType).casFeatCode_score, v);}    
+   
+    
+  //*--------------*
+  //* Feature: ngrams
+
+  /** getter for ngrams - gets a list of ngrams associated with a sentence
+   * @generated
+   * @return value of the feature 
+   */
+  public FSArray getNgrams() {
+    if (ComponentAnnotation_Type.featOkTst && ((ComponentAnnotation_Type)jcasType).casFeat_ngrams == null)
+      jcasType.jcas.throwFeatMissing("ngrams", "type.ComponentAnnotation");
+    return (FSArray)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((ComponentAnnotation_Type)jcasType).casFeatCode_ngrams)));}
+    
+  /** setter for ngrams - sets a list of ngrams associated with a sentence 
+   * @generated
+   * @param v value to set into the feature 
+   */
+  public void setNgrams(FSArray v) {
+    if (ComponentAnnotation_Type.featOkTst && ((ComponentAnnotation_Type)jcasType).casFeat_ngrams == null)
+      jcasType.jcas.throwFeatMissing("ngrams", "type.ComponentAnnotation");
+    jcasType.ll_cas.ll_setRefValue(addr, ((ComponentAnnotation_Type)jcasType).casFeatCode_ngrams, jcasType.ll_cas.ll_getFSRef(v));}    
+    
+  /** indexed getter for ngrams - gets an indexed value - a list of ngrams associated with a sentence
+   * @generated
+   * @param i index in the array to get
+   * @return value of the element at index i 
+   */
+  public Ngram getNgrams(int i) {
+    if (ComponentAnnotation_Type.featOkTst && ((ComponentAnnotation_Type)jcasType).casFeat_ngrams == null)
+      jcasType.jcas.throwFeatMissing("ngrams", "type.ComponentAnnotation");
+    jcasType.jcas.checkArrayBounds(jcasType.ll_cas.ll_getRefValue(addr, ((ComponentAnnotation_Type)jcasType).casFeatCode_ngrams), i);
+    return (Ngram)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefArrayValue(jcasType.ll_cas.ll_getRefValue(addr, ((ComponentAnnotation_Type)jcasType).casFeatCode_ngrams), i)));}
+
+  /** indexed setter for ngrams - sets an indexed value - a list of ngrams associated with a sentence
+   * @generated
+   * @param i index in the array to set
+   * @param v value to set into the array 
+   */
+  public void setNgrams(int i, Ngram v) { 
+    if (ComponentAnnotation_Type.featOkTst && ((ComponentAnnotation_Type)jcasType).casFeat_ngrams == null)
+      jcasType.jcas.throwFeatMissing("ngrams", "type.ComponentAnnotation");
+    jcasType.jcas.checkArrayBounds(jcasType.ll_cas.ll_getRefValue(addr, ((ComponentAnnotation_Type)jcasType).casFeatCode_ngrams), i);
+    jcasType.ll_cas.ll_setRefArrayValue(jcasType.ll_cas.ll_getRefValue(addr, ((ComponentAnnotation_Type)jcasType).casFeatCode_ngrams), i, jcasType.ll_cas.ll_getFSRef(v));}
   }
 
     

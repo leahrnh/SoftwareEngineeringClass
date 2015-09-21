@@ -20,6 +20,12 @@
           <description>A component's confidence score assigned to this annotation.</description>
           <rangeTypeName>uima.cas.Double</rangeTypeName>
         </featureDescription>
+      <featureDescription>
+          <name>ngrams</name>
+          <description>a list of ngrams associated with a sentence</description>
+          <rangeTypeName>uima.cas.FSArray</rangeTypeName>
+          <elementType>type.Ngram</elementType>
+        </featureDescription>
       </features>
     </typeDescription>
     <typeDescription>
@@ -35,7 +41,7 @@
         <featureDescription>
           <name>answers</name>
           <description/>
-          <rangeTypeName>uima.cas.FSList</rangeTypeName>
+          <rangeTypeName>uima.cas.FSArray</rangeTypeName>
           <elementType>type.Answer</elementType>
         </featureDescription>
       </features>
@@ -97,7 +103,7 @@
         <featureDescription>
           <name>tokens</name>
           <description>Tokens contained in this n-gram.</description>
-          <rangeTypeName>uima.cas.FSList</rangeTypeName>
+          <rangeTypeName>uima.cas.FSArray</rangeTypeName>
           <elementType>type.Token</elementType>
         </featureDescription>
       </features>

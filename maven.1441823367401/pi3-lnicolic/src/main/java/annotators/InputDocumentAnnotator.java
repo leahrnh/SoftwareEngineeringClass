@@ -1,5 +1,6 @@
 package annotators;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -8,6 +9,7 @@ import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.cas.FSIndex;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.EmptyFSList;
+import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.cas.NonEmptyFSList;
 
 import type.Answer;
@@ -45,25 +47,20 @@ public class InputDocumentAnnotator extends JCasAnnotator_ImplBase {
     	System.err.println("No question found"); //This should throw an exception instead?
     }
     
-    NonEmptyFSList answerHead = new NonEmptyFSList(aJCas);
-    NonEmptyFSList answerList = answerHead;
-    
     //Go through answers, and append each one to a list.
     Iterator<Answer> answerIter = answerIndex.iterator();
+    ArrayList<Answer> answerList = new ArrayList();
     while (answerIter.hasNext()) {
     	Answer answer = (Answer) answerIter.next();
-    	answerHead.setHead(answer);
-    	if (answerIter.hasNext()) {
-    		answerHead.setTail(new NonEmptyFSList(aJCas));
-    		answerHead = (NonEmptyFSList) answerHead.getTail();
-    	} else {
-    		answerHead.setTail(new EmptyFSList(aJCas));
-    	}
-    	if (!answerIter.hasNext()) {
-    		doc.setEnd(answer.getEnd());
-    	}
+    	answerList.add(answer);
     }
-    doc.setAnswers(answerList);
+    
+    //convert ArrayList<Answer> into FSArray<Answer>
+    FSArray answerArray = new FSArray(aJCas, answerList.size());
+    for (int i=0; i<answerList.size();i++) {
+    	answerArray.set(i, answerList.get(i));
+    }
+    doc.setAnswers(answerArray);
     doc.addToIndexes();
   }
     

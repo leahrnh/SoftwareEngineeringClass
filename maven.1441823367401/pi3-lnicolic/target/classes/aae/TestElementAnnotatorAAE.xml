@@ -4,13 +4,23 @@
   <primitive>false</primitive>  
   <delegateAnalysisEngineSpecifiers>
     <delegateAnalysisEngine key="QuestionAnnotator">
-      <import name="annotators.QuestionAnnotator"/>
+      <import location="../annotators/QuestionAnnotator.xml"/>
     </delegateAnalysisEngine>
     <delegateAnalysisEngine key="AnswerAnnotator">
-      <import name="annotators.AnswerAnnotator"/>
+      <import location="../annotators/AnswerAnnotator.xml"/>
     </delegateAnalysisEngine>
-  <delegateAnalysisEngine key="InputDocumentAnnotator">
+  <delegateAnalysisEngine key="TokenAnnotator">
+      <import location="../annotators/TokenAnnotator.xml"/>
+    
+    </delegateAnalysisEngine>
+  <delegateAnalysisEngine key="NGramAnnotator">
+      <import location="../annotators/NGramAnnotator.xml"/>
+    
+    
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="InputDocumentAnnotator">
       <import location="../annotators/InputDocumentAnnotator.xml"/>
+    
     
     </delegateAnalysisEngine>
   </delegateAnalysisEngineSpecifiers>
@@ -25,7 +35,9 @@
       <fixedFlow>
         <node>QuestionAnnotator</node>
         <node>AnswerAnnotator</node>
-      <node>InputDocumentAnnotator</node>
+      <node>TokenAnnotator</node>
+      <node>NGramAnnotator</node>
+        <node>InputDocumentAnnotator</node>
       </fixedFlow>
     </flowConstraints>
     <typePriorities/>

@@ -7,11 +7,14 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.JCasRegistry;
 import org.apache.uima.jcas.cas.TOP_Type;
 
+import org.apache.uima.jcas.cas.FSArray;
+
+
 import org.apache.uima.jcas.cas.FSList;
 
 
 /** Stores the information about an n-gram.
- * Updated by JCasGen Wed Sep 16 15:17:38 EDT 2015
+ * Updated by JCasGen Mon Sep 21 11:36:06 EDT 2015
  * XML source: /Users/leah/Tulip/CMU/Fall2015/Software Engineering/SoftwareEngineeringClass/maven.1441823367401/pi3-lnicolic/src/main/resources/typeSystem.xml
  * @generated */
 public class Ngram extends ComponentAnnotation {
@@ -105,19 +108,41 @@ public class Ngram extends ComponentAnnotation {
    * @generated
    * @return value of the feature 
    */
-  public FSList getTokens() {
+  public FSArray getTokens() {
     if (Ngram_Type.featOkTst && ((Ngram_Type)jcasType).casFeat_tokens == null)
       jcasType.jcas.throwFeatMissing("tokens", "type.Ngram");
-    return (FSList)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((Ngram_Type)jcasType).casFeatCode_tokens)));}
+    return (FSArray)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((Ngram_Type)jcasType).casFeatCode_tokens)));}
     
   /** setter for tokens - sets Tokens contained in this n-gram. 
    * @generated
    * @param v value to set into the feature 
    */
-  public void setTokens(FSList v) {
+  public void setTokens(FSArray v) {
     if (Ngram_Type.featOkTst && ((Ngram_Type)jcasType).casFeat_tokens == null)
       jcasType.jcas.throwFeatMissing("tokens", "type.Ngram");
     jcasType.ll_cas.ll_setRefValue(addr, ((Ngram_Type)jcasType).casFeatCode_tokens, jcasType.ll_cas.ll_getFSRef(v));}    
+    
+  /** indexed getter for tokens - gets an indexed value - Tokens contained in this n-gram.
+   * @generated
+   * @param i index in the array to get
+   * @return value of the element at index i 
+   */
+  public Token getTokens(int i) {
+    if (Ngram_Type.featOkTst && ((Ngram_Type)jcasType).casFeat_tokens == null)
+      jcasType.jcas.throwFeatMissing("tokens", "type.Ngram");
+    jcasType.jcas.checkArrayBounds(jcasType.ll_cas.ll_getRefValue(addr, ((Ngram_Type)jcasType).casFeatCode_tokens), i);
+    return (Token)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefArrayValue(jcasType.ll_cas.ll_getRefValue(addr, ((Ngram_Type)jcasType).casFeatCode_tokens), i)));}
+
+  /** indexed setter for tokens - sets an indexed value - Tokens contained in this n-gram.
+   * @generated
+   * @param i index in the array to set
+   * @param v value to set into the array 
+   */
+  public void setTokens(int i, Token v) { 
+    if (Ngram_Type.featOkTst && ((Ngram_Type)jcasType).casFeat_tokens == null)
+      jcasType.jcas.throwFeatMissing("tokens", "type.Ngram");
+    jcasType.jcas.checkArrayBounds(jcasType.ll_cas.ll_getRefValue(addr, ((Ngram_Type)jcasType).casFeatCode_tokens), i);
+    jcasType.ll_cas.ll_setRefArrayValue(jcasType.ll_cas.ll_getRefValue(addr, ((Ngram_Type)jcasType).casFeatCode_tokens), i, jcasType.ll_cas.ll_getFSRef(v));}
   }
 
     

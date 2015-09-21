@@ -10,10 +10,10 @@ import org.apache.uima.jcas.cas.TOP_Type;
 
 
 /** Stores the information about an answer.
- * Updated by JCasGen Wed Sep 16 15:17:38 EDT 2015
+ * Updated by JCasGen Mon Sep 21 11:36:06 EDT 2015
  * XML source: /Users/leah/Tulip/CMU/Fall2015/Software Engineering/SoftwareEngineeringClass/maven.1441823367401/pi3-lnicolic/src/main/resources/typeSystem.xml
  * @generated */
-public class Answer extends ComponentAnnotation {
+public class Answer extends ComponentAnnotation implements Comparable {
   /** @generated
    * @ordered 
    */
@@ -138,7 +138,16 @@ public class Answer extends ComponentAnnotation {
   public void setLabel(boolean v) {
     if (Answer_Type.featOkTst && ((Answer_Type)jcasType).casFeat_label == null)
       jcasType.jcas.throwFeatMissing("label", "type.Answer");
-    jcasType.ll_cas.ll_setBooleanValue(addr, ((Answer_Type)jcasType).casFeatCode_label, v);}    
+    jcasType.ll_cas.ll_setBooleanValue(addr, ((Answer_Type)jcasType).casFeatCode_label, v);}
+  
+  @Override
+	public int compareTo(Object o) {
+		Answer a2 = (Answer) o;
+		Double scoreDiff = (getScore() - a2.getScore());
+		Double converted = scoreDiff * 1000;
+		int diff = converted.intValue();
+		return diff;
+	}
   }
 
     
