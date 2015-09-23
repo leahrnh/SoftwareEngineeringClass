@@ -13,14 +13,18 @@ import org.apache.uima.util.FileUtils;
 import org.apache.uima.util.Progress;
 import org.apache.uima.util.ProgressImpl;
 
-
+/**
+ * Collection Reader to read documents and prepare them for annotation
+ */
 public class FileSystemCollectionReader extends CollectionReader_ImplBase {
 	
 	private int mCurrentIndex;
 	private ArrayList<File> mFiles;
 	
+	public static final String INPUT_DIR = "inputDir";
+	
 	public void initialize() throws ResourceInitializationException {
-		File directory = new File("src/main/resources/inputData");
+		File directory = new File((String) getConfigParameterValue(INPUT_DIR));
 		mCurrentIndex = 0; 
 		  
 		//get list of files (not subdirectories) in the specified directory
@@ -33,6 +37,9 @@ public class FileSystemCollectionReader extends CollectionReader_ImplBase {
 		}
 	}
 
+	/**
+	 * update file indexes and set basic jcas info
+	 */
 	@Override
 	public void getNext(CAS aCAS) throws IOException, CollectionException {
 	    JCas jcas;
@@ -49,6 +56,19 @@ public class FileSystemCollectionReader extends CollectionReader_ImplBase {
 	    jcas.setDocumentText(text);
 	    
 	    jcas.setDocumentLanguage("English");
+	    
+	    
+	 // Also store location of source document in CAS. This information is critical
+	    // if CAS Consumers will need to know where the original document contents are located.
+	    // For example, the Semantic Search CAS Indexer writes this information into the
+	    // search index that it creates, which allows applications that use the search index to
+	    // locate the documents that satisfy their semantic queries.
+	    /*SourceDocumentInformation srcDocInfo = new SourceDocumentInformation(jcas);
+	    srcDocInfo.setUri(file.getAbsoluteFile().toURL().toString());
+	    srcDocInfo.setOffsetInSource(0);
+	    srcDocInfo.setDocumentSize((int) file.length());
+	    srcDocInfo.setLastSegment(mCurrentIndex == mFiles.size());
+	    srcDocInfo.addToIndexes();*/
 
 	}
 

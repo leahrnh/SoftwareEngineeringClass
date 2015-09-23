@@ -10,6 +10,10 @@ import org.apache.uima.jcas.JCas;
 
 import type.Token;
 
+/**
+ * Annotates individual tokens in the input document
+ *
+ */
 public class TokenAnnotator extends JCasAnnotator_ImplBase {
 	
 	private Pattern tokenPattern = Pattern.compile(" ([a-zA-Z']+)");

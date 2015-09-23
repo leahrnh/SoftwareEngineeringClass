@@ -1,16 +1,19 @@
 package annotators;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.cas.FSIndex;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.EmptyFSList;
 import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.cas.NonEmptyFSList;
+import org.apache.uima.resource.ResourceInitializationException;
 
 import type.Answer;
 import type.ComponentAnnotation;
@@ -20,13 +23,22 @@ import type.Question;
 import type.Token;
 
 /**
- * Annotator that detects co-occurance of a single Question and multiple Answers
- * and combines them into an InputDocument
+ * Annotates Ngrams within a Question or Answer. Each Question or Answer ends up with an associated array of ngrams
  */
 public class NGramAnnotator extends JCasAnnotator_ImplBase {
 	
-    int n = 2;
+	public static final String EN = "N";
     Iterator tokenIter;
+    int n;
+   
+   /**
+   * @see AnalysisComponent#initialize(UimaContext)
+   */
+   public void initialize(UimaContext aContext) throws ResourceInitializationException {
+     super.initialize(aContext);
+     
+     n = Integer.parseInt((String) aContext.getConfigParameterValue(EN));
+   }
 
   /**
    * @see JCasAnnotator_ImplBase#process(JCas)

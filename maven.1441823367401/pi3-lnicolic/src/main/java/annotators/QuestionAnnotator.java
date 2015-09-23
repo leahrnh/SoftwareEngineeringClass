@@ -11,6 +11,10 @@ import org.apache.uima.jcas.JCas;
 import type.Answer;
 import type.Question;
 
+/**
+ * Annotates question lines from the input document
+ *
+ */
 public class QuestionAnnotator extends JCasAnnotator_ImplBase {
 	
 	private Pattern question = Pattern.compile("Q (.+)");

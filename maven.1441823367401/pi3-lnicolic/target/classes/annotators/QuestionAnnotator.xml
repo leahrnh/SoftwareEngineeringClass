@@ -4,8 +4,8 @@
   <primitive>true</primitive>  
   <annotatorImplementationName>annotators.QuestionAnnotator</annotatorImplementationName>
   <analysisEngineMetaData>
-    <name>TestElementAnnotatorDescriptor</name>
-    <description/>
+    <name>QuestionAnnotatorDescriptor</name>
+    <description>Works with QuestionAnnotator.java</description>
     <version>1.0</version>
     <vendor/>
     <configurationParameters/>

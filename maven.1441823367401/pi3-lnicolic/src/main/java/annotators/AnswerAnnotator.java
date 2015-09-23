@@ -11,6 +11,9 @@ import org.apache.uima.jcas.JCas;
 import type.Answer;
 import type.Question;
 
+/**
+ * Annotates answer lines from the input document
+ */
 public class AnswerAnnotator extends JCasAnnotator_ImplBase {
 	
 	private Pattern answer = Pattern.compile("(A[0-9]) (0|1) (.+)");

@@ -4,8 +4,8 @@
   <primitive>true</primitive>  
   <annotatorImplementationName>annotators.InputDocumentAnnotator</annotatorImplementationName>
   <analysisEngineMetaData>
-    <name>TestElementAnnotatorDescriptor</name>
-    <description/>
+    <name>InputDocumentAnnotatorDescriptor</name>
+    <description>works with InputDocumentAnnotator.java</description>
     <version>1.0</version>
     <vendor/>
     <configurationParameters/>

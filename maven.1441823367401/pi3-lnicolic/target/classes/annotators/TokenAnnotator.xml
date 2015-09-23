@@ -4,8 +4,8 @@
   <primitive>true</primitive>  
   <annotatorImplementationName>annotators.TokenAnnotator</annotatorImplementationName>
   <analysisEngineMetaData>
-    <name>TestElementAnnotatorDescriptor</name>
-    <description/>
+    <name>TokenAnnotatorDescriptor</name>
+    <description>Works with TokenAnnotator.java</description>
     <version>1.0</version>
     <vendor/>
     <configurationParameters/>

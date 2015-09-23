@@ -27,11 +27,26 @@
     <implementationName>Consumer</implementationName>
     <processingResourceMetaData>
         <name>casConsumer</name>
-        <description/>
+        <description>Works with Consumer.java to take in annotations, calculate scores, and write output.</description>
         <version/>
         <vendor/>
-        <configurationParameters/>
-        <configurationParameterSettings/>
+        <configurationParameters searchStrategy="language_fallback">
+      <configurationParameter>
+        <name>outputDir</name>
+        <description>The directory into which to put output files.</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>false</mandatory>
+      </configurationParameter>
+      </configurationParameters>
+        <configurationParameterSettings>
+      <nameValuePair>
+        <name>outputDir</name>
+        <value>
+          <string>src/main/resources/outputData</string>
+        </value>
+      </nameValuePair>
+      </configurationParameterSettings>
 
         <typeSystemDescription>
           <imports>
