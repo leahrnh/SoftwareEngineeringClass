@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+    <name>typeSystemDescriptor</name>
+    <description>This typesystem only describes the input and output types of the CPE.
+You need to implement the types requried for your ranking model.</description>
+    <version>1.0</version>
+    <vendor/>
+  <types>
+    <typeDescription>
+      <name>type.ComponentAnnotation</name>
+      <description>A parent annotation which expects individual annotation types to inherit from.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>componentId</name>
+          <description>An identifier that specifies which system produced this annotation.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>score</name>
+          <description>The ranking score acquired for the answer and the confidence score acquired for the question.</description>
+          <rangeTypeName>uima.cas.Double</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>type.InputDocument</name>
+      <description>Stores all the questions and its associated answer candidates.</description>
+      <supertypeName>type.ComponentAnnotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>passages</name>
+          <description>All the passages found in the input file.</description>
+          <rangeTypeName>uima.cas.FSArray</rangeTypeName>
+          <elementType>type.Passage</elementType>
+        </featureDescription>
+        <featureDescription>
+          <name>questions</name>
+          <description>All the questions found in the input file.</description>
+          <rangeTypeName>uima.cas.FSArray</rangeTypeName>
+          <elementType>type.Question</elementType>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>type.Question</name>
+      <description>Stores the information about a question.</description>
+      <supertypeName>type.ComponentAnnotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>id</name>
+          <description>The identifier for the question.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>sentence</name>
+          <description>The text of the question.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>type.Passage</name>
+      <description>Stores the information of the passage.</description>
+      <supertypeName>type.ComponentAnnotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>questionId</name>
+          <description>This is the ID of the question it intends to answer to.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>sentence</name>
+          <description>The passage text extracted from the source document.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>label</name>
+          <description>This stores a gold standard label of this answer.  'True' means that it answers the question; otherwise, it is does not.</description>
+          <rangeTypeName>uima.cas.Boolean</rangeTypeName>
+        </featureDescription>
+      <featureDescription>
+          <name>sourceDocId</name>
+          <description>This specifies the source document id to which the passage belongs to.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>type.QuestionSet</name>
+      <description>A grouping of the Question and Passages associated with a single question ID.</description>
+      <supertypeName>type.ComponentAnnotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>question</name>
+          <description/>
+          <rangeTypeName>type.Question</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>passages</name>
+          <description>All the passages associated with a question ID</description>
+          <rangeTypeName>uima.cas.FSArray</rangeTypeName>
+          <elementType>type.Passage</elementType>
+        </featureDescription>
+      </features>
+    </typeDescription>
+  </types>
+</typeSystemDescription>
