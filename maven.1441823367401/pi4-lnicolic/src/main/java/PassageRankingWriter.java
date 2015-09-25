@@ -56,7 +56,7 @@ public class PassageRankingWriter extends CasConsumer_ImplBase {
 		      throw new ResourceProcessException(e);
 		  }
 		  
-		  FSIterator qsIter = jcas.getAnnotationIndex(QuestionSet.type).iterator();
+		  FSIterator passageIter = jcas.getAnnotationIndex(Passage.type).iterator();
 		  File outFile = null;
 		  DecimalFormat format = new DecimalFormat("0.000");
 		  
@@ -73,21 +73,12 @@ public class PassageRankingWriter extends CasConsumer_ImplBase {
 			
 			//process QuestionSets and write passage info to files
 			//maybe this could just be done by iterating over passages? But I don't know if the order would be correct
-			while (qsIter.hasNext()) {  
-			  QuestionSet qs = (QuestionSet) qsIter.next();
-			  
-			  //sort passages
-			  FSArray passageFSArray = qs.getPassages();
-			  FeatureStructure[] passageArray = passageFSArray.toArray();
-			  Arrays.sort(passageArray);
-			  
-			  //print out passage info
-			  for (int i=0; i<passageArray.length;i++) {
-			    Passage passage = (Passage) passageArray[i];
+			while (passageIter.hasNext()) {  
+				Passage passage = (Passage) passageIter.next();
 				String s = passage.getQuestionId() + " " + passage.getSourceDocId() + " " + format.format(passage.getScore()) + " " + passage.getSentence();
 				bw.write(s+"\n");
-			  }
 			}
+			
 			bw.close();
 		  } catch (IOException e) {
 				e.printStackTrace();

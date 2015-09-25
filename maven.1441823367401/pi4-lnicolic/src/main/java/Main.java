@@ -24,7 +24,7 @@ public class Main {
 
     // Instantiate CPE.
     CpeDescription cpeDesc = UIMAFramework.getXMLParser()
-            .parseCpeDescription(new XMLInputSource("src/main/resources/cpeDescriptor.xml"));
+            .parseCpeDescription(new XMLInputSource("src/main/resources/descriptors/cpeDescriptor.xml"));
     CollectionProcessingEngine mCPE = UIMAFramework.produceCollectionProcessingEngine(cpeDesc);
 
     // Configure your collection reader with the given input directory. The code below assumes that
