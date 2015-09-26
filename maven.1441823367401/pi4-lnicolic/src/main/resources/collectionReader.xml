@@ -4,7 +4,7 @@
   <implementationName>QuestionPassageReader</implementationName>
   <processingResourceMetaData>
     <name>CollectionReader</name>
-    <description>Works with FileSystemCollectionReader.java to read info from files.</description>
+    <description>Works with QuestionPassageReader.java to read info from files.</description>
     <version/>
     <vendor/>
     <configurationParameters searchStrategy="language_fallback">

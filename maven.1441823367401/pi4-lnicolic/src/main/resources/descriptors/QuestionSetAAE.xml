@@ -19,7 +19,7 @@
   </delegateAnalysisEngineSpecifiers>
   <analysisEngineMetaData>
     <name>QuestionSetAAE</name>
-    <description/>
+    <description>Takes in a source document, and creates QuestionSets annotated with Questions, Passages, and include Passage scores.</description>
     <version>1.0</version>
     <vendor/>
     <configurationParameters/>

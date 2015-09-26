@@ -10,7 +10,7 @@ import org.apache.uima.jcas.cas.TOP_Type;
 
 
 /** Stores the information of the passage.
- * Updated by JCasGen Wed Sep 23 23:36:18 EDT 2015
+ * Updated by JCasGen Fri Sep 25 22:27:13 EDT 2015
  * XML source: /Users/leah/Tulip/CMU/Fall2015/Software Engineering/SoftwareEngineeringClass/maven.1441823367401/pi4-lnicolic/src/main/resources/typeSystem.xml
  * @generated */
 public class Passage extends ComponentAnnotation implements Comparable {
@@ -160,9 +160,8 @@ public class Passage extends ComponentAnnotation implements Comparable {
   public void setSourceDocId(String v) {
     if (Passage_Type.featOkTst && ((Passage_Type)jcasType).casFeat_sourceDocId == null)
       jcasType.jcas.throwFeatMissing("sourceDocId", "type.Passage");
-    jcasType.ll_cas.ll_setStringValue(addr, ((Passage_Type)jcasType).casFeatCode_sourceDocId, v);} 
-  
-  @Override
+    jcasType.ll_cas.ll_setStringValue(addr, ((Passage_Type)jcasType).casFeatCode_sourceDocId, v);}    
+    @Override
   public int compareTo(Object o) {
 	Passage p2 = (Passage) o;
 	Double scoreDiff = (getScore() - p2.getScore());

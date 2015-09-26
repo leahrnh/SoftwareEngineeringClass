@@ -3,8 +3,8 @@
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
   <primitive>true</primitive>  <annotatorImplementationName>annotators.ScoreAnnotator</annotatorImplementationName>
   <analysisEngineMetaData>
-    <name>QuestionSetAnnotator</name>
-    <description>Combines Question and Passage annotations into QuestionSets</description>
+    <name>ScoreAnnotator</name>
+    <description>Calculates a score for each Passage in a QuestionSet</description>
     <version>1.0</version>
     <vendor/>
     <configurationParameters/>

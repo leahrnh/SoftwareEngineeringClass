@@ -13,7 +13,7 @@ import org.apache.uima.util.Progress;
 import org.apache.uima.util.ProgressImpl;
 
 /**
- * This Collection Reader serves as a reader to parse your input.
+ * This Collection Reader serves as a reader to parse the input.
  */
 public class QuestionPassageReader extends CollectionReader_ImplBase {
 	

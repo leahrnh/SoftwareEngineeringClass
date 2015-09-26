@@ -22,7 +22,7 @@ import type.Question;
 import type.QuestionSet;
 
 /**
- * This CAS Consumer serves as a writer to generate your output.
+ * This CAS Consumer serves as a writer to generate the output.
  */
 public class PassageRankingWriter extends CasConsumer_ImplBase {
 
@@ -43,7 +43,7 @@ public class PassageRankingWriter extends CasConsumer_ImplBase {
 	}
 
 	/**
-	 * process consumer, including calculations and writing output files
+	 * Process consumer, including calculations and writing output files
 	 */
 	@Override
 	public void processCas(CAS aCAS) throws ResourceProcessException {

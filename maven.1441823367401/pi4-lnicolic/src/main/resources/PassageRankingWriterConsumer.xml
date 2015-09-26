@@ -27,7 +27,7 @@
     <implementationName>PassageRankingWriter</implementationName>
     <processingResourceMetaData>
         <name>casConsumer</name>
-        <description>Works with Consumer.java to take in annotations, calculate scores, and write output.</description>
+        <description>Works with PassageRankingWriter.java to take in annotations, calculate scores, and write output.</description>
         <version/>
         <vendor/>
         <configurationParameters searchStrategy="language_fallback">

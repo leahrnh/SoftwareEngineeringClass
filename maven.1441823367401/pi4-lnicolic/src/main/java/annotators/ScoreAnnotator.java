@@ -19,7 +19,7 @@ import type.Question;
 import type.QuestionSet;
 
 /**
- * Annotates question lines from the input document
+ * Calculates a score for each Passage in a QuestionSet
  *
  */
 public class ScoreAnnotator extends JCasAnnotator_ImplBase {
@@ -68,7 +68,7 @@ public class ScoreAnnotator extends JCasAnnotator_ImplBase {
 			/*if (!newToken.equals(token)) {
 				System.out.println("Changed " + token + " to " + newToken);
 			}*/
-			newTokens.add(token);
+			newTokens.add(newToken);
 		}
 		return newTokens;
 	}

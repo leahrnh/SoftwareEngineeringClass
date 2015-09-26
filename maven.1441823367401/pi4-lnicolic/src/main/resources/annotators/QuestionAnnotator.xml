@@ -4,7 +4,7 @@
   <primitive>true</primitive>  <annotatorImplementationName>annotators.QuestionAnnotator</annotatorImplementationName>
   <analysisEngineMetaData>
     <name>QuestionAnnotator</name>
-    <description/>
+    <description>Identify and annotate questions from the input document</description>
     <version>1.0</version>
     <vendor/>
     <configurationParameters/>

@@ -16,8 +16,7 @@ import type.Question;
 import type.QuestionSet;
 
 /**
- * Annotates question lines from the input document
- *
+ * Combines Questions and Passages with matching IDs into QuestionSets
  */
 public class QuestionSetAnnotator extends JCasAnnotator_ImplBase {
 
@@ -47,6 +46,7 @@ public class QuestionSetAnnotator extends JCasAnnotator_ImplBase {
 	    		passageMap.get(qid).add(passage);
 	    	} else {
 	    		ArrayList<Passage> passageList = new ArrayList();
+	    		passageList.add(passage);
 	    		passageMap.put(qid, passageList);
 	    	}
 	    }

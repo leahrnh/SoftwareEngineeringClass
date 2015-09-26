@@ -13,14 +13,16 @@ import org.apache.uima.cas.impl.FeatureImpl;
 import org.apache.uima.cas.Feature;
 
 /** A grouping of the Question and Passages associated with a single question ID.
- * Updated by JCasGen Wed Sep 23 23:36:18 EDT 2015
+ * Updated by JCasGen Fri Sep 25 22:27:13 EDT 2015
  * @generated */
 public class QuestionSet_Type extends ComponentAnnotation_Type {
+	
   /** @generated 
    * @return the generator for this type
    */
   @Override
   protected FSGenerator getFSGenerator() {return fsGenerator;}
+  
   /** @generated */
   private final FSGenerator fsGenerator = 
     new FSGenerator() {
@@ -37,9 +39,11 @@ public class QuestionSet_Type extends ComponentAnnotation_Type {
         } else return new QuestionSet(addr, QuestionSet_Type.this);
   	  }
     };
+    
   /** @generated */
   @SuppressWarnings ("hiding")
   public final static int typeIndexID = QuestionSet.typeIndexID;
+  
   /** @generated 
      @modifiable */
   @SuppressWarnings ("hiding")

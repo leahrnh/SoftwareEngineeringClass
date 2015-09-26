@@ -8,7 +8,7 @@ import org.apache.uima.util.XMLInputSource;
 public class Main {
 
   /**
-   * This method is the main program and entry point of your system. It runs a Collection Processing
+   * This method is the main program and entry point of the system. It runs a Collection Processing
    * Engine (CPE).
    * 
    * @param args

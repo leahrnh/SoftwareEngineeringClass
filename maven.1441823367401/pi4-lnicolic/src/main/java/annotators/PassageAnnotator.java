@@ -12,7 +12,7 @@ import type.Passage;
 import type.Question;
 
 /**
- * Annotates question lines from the input document
+ * Annotates passage lines from the input document
  *
  */
 public class PassageAnnotator extends JCasAnnotator_ImplBase {
