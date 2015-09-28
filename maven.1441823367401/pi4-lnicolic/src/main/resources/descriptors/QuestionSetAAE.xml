@@ -4,22 +4,21 @@
   <primitive>false</primitive>  
   <delegateAnalysisEngineSpecifiers>
     <delegateAnalysisEngine key="PassageAnnotator">
-      <import location="../annotators/PassageAnnotator.xml"/>
+      <import location="PassageAnnotator.xml"/>
     </delegateAnalysisEngine>
     <delegateAnalysisEngine key="QuestionAnnotator">
-      <import location="../annotators/QuestionAnnotator.xml"/>
+      <import location="QuestionAnnotator.xml"/>
     </delegateAnalysisEngine>
     <delegateAnalysisEngine key="QuestionSetAnnotator">
-      <import location="../annotators/QuestionSetAnnotator.xml"/>
+      <import location="QuestionSetAnnotator.xml"/>
     </delegateAnalysisEngine>
-  <delegateAnalysisEngine key="ScoreAnnotator">
-      <import location="../annotators/ScoreAnnotator.xml"/>
-    
+    <delegateAnalysisEngine key="ScoreAnnotator">
+      <import location="ScoreAnnotator.xml"/>
     </delegateAnalysisEngine>
   </delegateAnalysisEngineSpecifiers>
   <analysisEngineMetaData>
     <name>QuestionSetAAE</name>
-    <description>Takes in a source document, and creates QuestionSets annotated with Questions, Passages, and include Passage scores.</description>
+    <description/>
     <version>1.0</version>
     <vendor/>
     <configurationParameters/>
@@ -29,7 +28,7 @@
         <node>PassageAnnotator</node>
         <node>QuestionAnnotator</node>
         <node>QuestionSetAnnotator</node>
-      <node>ScoreAnnotator</node>
+        <node>ScoreAnnotator</node>
       </fixedFlow>
     </flowConstraints>
     <fsIndexCollection/>

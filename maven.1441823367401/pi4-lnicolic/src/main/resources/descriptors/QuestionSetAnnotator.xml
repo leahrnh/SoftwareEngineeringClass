@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
-  <primitive>true</primitive>  <annotatorImplementationName>annotators.PassageAnnotator</annotatorImplementationName>
+  <primitive>true</primitive>  <annotatorImplementationName>annotators.QuestionSetAnnotator</annotatorImplementationName>
   <analysisEngineMetaData>
-    <name>PassageAnnotator</name>
-    <description>Identify and annotate passages from the input text</description>
+    <name>QuestionSetAnnotator</name>
+    <description>Combines Question and Passage annotations into QuestionSets</description>
     <version>1.0</version>
     <vendor/>
     <configurationParameters/>
     <configurationParameterSettings/>
     <typeSystemDescription>
       <imports>
-        <import location="../typeSystem.xml"/>
+        <import location="typeSystem.xml"/>
       </imports>
     </typeSystemDescription>
     <typePriorities/>
     <fsIndexCollection/>
     <capabilities>
       <capability>
-        <inputs/>
-        <outputs>
+        <inputs>
+          <type allAnnotatorFeatures="true">type.Question</type>
           <type allAnnotatorFeatures="true">type.Passage</type>
+        </inputs>
+        <outputs>
+          <type allAnnotatorFeatures="true">type.QuestionSet</type>
         </outputs>
         <languagesSupported/>
       </capability>

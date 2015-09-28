@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
-  <primitive>true</primitive>  <annotatorImplementationName>annotators.QuestionAnnotator</annotatorImplementationName>
+  <primitive>true</primitive>  <annotatorImplementationName>annotators.ScoreAnnotator</annotatorImplementationName>
   <analysisEngineMetaData>
-    <name>QuestionAnnotator</name>
-    <description>Identify and annotate questions from the input document</description>
+    <name>ScoreAnnotator</name>
+    <description>Calculates a score for each Passage in a QuestionSet</description>
     <version>1.0</version>
     <vendor/>
     <configurationParameters/>
     <configurationParameterSettings/>
     <typeSystemDescription>
       <imports>
-        <import location="../typeSystem.xml"/>
+        <import location="typeSystem.xml"/>
       </imports>
     </typeSystemDescription>
     <typePriorities/>
     <fsIndexCollection/>
     <capabilities>
       <capability>
-        <inputs/>
+        <inputs>
+          <type allAnnotatorFeatures="true">type.QuestionSet</type>
+          </inputs>
         <outputs>
-          <type allAnnotatorFeatures="true">type.Question</type>
+          <type allAnnotatorFeatures="true">type.QuestionSet</type>
         </outputs>
         <languagesSupported/>
       </capability>
