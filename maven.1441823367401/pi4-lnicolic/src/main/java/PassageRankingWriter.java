@@ -6,6 +6,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.regex.Pattern;
 
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
@@ -75,7 +76,8 @@ public class PassageRankingWriter extends CasConsumer_ImplBase {
 			//maybe this could just be done by iterating over passages? But I don't know if the order would be correct
 			while (passageIter.hasNext()) {  
 				Passage passage = (Passage) passageIter.next();
-				String s = passage.getQuestionId() + " " + passage.getSourceDocId() + " " + format.format(passage.getScore()) + " " + passage.getSentence();
+				String s = passage.getCoveredText();
+			    s = Pattern.compile(" (1|-1|2) ").matcher(s).replaceFirst(" " + format.format(passage.getScore()) + " ");
 				bw.write(s+"\n");
 			}
 			
