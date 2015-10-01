@@ -80,7 +80,7 @@ public class PassageRankingWriter extends CasConsumer_ImplBase {
 			//process QuestionSets and metric passage info to file
 			while (qsIter.hasNext()) {  
 				QuestionSet qs = (QuestionSet) qsIter.next();
-				String s = qs.getQuestion().getId() + "," + format.format(qs.getPAt1()) + "," + format.format(qs.getPAt5()) + ","  + format.format(qs.getRr()) + ",?";
+				String s = qs.getQuestion().getId() + "," + format.format(qs.getPAt1()) + "," + format.format(qs.getPAt5()) + ","  + format.format(qs.getRr()) + "," + format.format(qs.getAp());
 				bw.write(s+"\n");
 			}
 			bw.close();

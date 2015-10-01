@@ -39,24 +39,26 @@ public class MetricAnnotator extends JCasAnnotator_ImplBase {
 	    
 	    //initialize mean counters
 	    double sumRR = 0;
+	    double sumAP = 0;
 	    int numQueries = 0;
 	    
-	    try {
+	    //try {
 	    //debug file
-	    File debugFile = new File("src/main/resources/outputData/debug.csv");
+	    /*File debugFile = new File("src/main/resources/outputData/debug.csv");
 		FileWriter debugFW = new FileWriter(debugFile.getAbsoluteFile());
 		BufferedWriter debugBW = new BufferedWriter(debugFW);
 		if (!debugFile.exists()) {
 			debugFile.createNewFile();
 		}
 		debugBW.write("question_id,Rank1,Rank2,Rank3,Rank4,Rank5,Etc.\n");
+		*/
 	    
 	    while (qsIter.hasNext()) {
 	    	
 	    	QuestionSet qs = (QuestionSet) qsIter.next();
 	    	numQueries++;
 
-			debugBW.write(qs.getQuestion().getId());
+			//debugBW.write(qs.getQuestion().getId());
 
 	    	//turn passages into a normal array and sort it
 	    	FeatureStructure[] passages = new FeatureStructure[qs.getPassages().size()];
@@ -71,24 +73,41 @@ public class MetricAnnotator extends JCasAnnotator_ImplBase {
 	    		qs.setPAt1(0.0);
 	    	}
 	    	
-	    	//calculate P@5 and RR
+	    	//one iteration just to count the number correct
 	    	int correct = 0;
-	    	int rrRank = 0;
 	    	for (int i=0;i<passages.length;i++) {
-	    		debugBW.write(","+((Passage) passages[i]).getLabel() + "/" + ((Passage) passages[i]).getScore());
+	    		//debugBW.write(","+((Passage) passages[i]).getLabel() + "/" + ((Passage) passages[i]).getScore());
 	    		if (((Passage) passages[i]).getLabel()==true) {
-	    			//calculate P@5
-	    			if (i<5) {
-	    				correct++;
-	    			}
+	    			correct++;
+	    		}
+	    	}
+	    	
+	    	//a second iteration to calculate P@5, RR, and AP
+	    	int rrRank = 0;
+	    	int tp = 0; //true positive
+	    	double apComponent = 0;
+	    	for (int n=0;n<passages.length;n++) {
+	    		if (((Passage) passages[n]).getLabel() == true) {
+	    			tp++;
 	    			
 	    			//calculate RR
 	    			if (rrRank==0) {
-	    				rrRank = i+1;
+	    				rrRank = n+1;
 	    			}
 	    		}
+	    		
+	    		double precision = (double) tp / (n+1);
+	    		
+	    		//calculate P@5
+	    		if (n==4) {
+	    			qs.setPAt5(precision);
+	    		}
+	    		
+	    		//sum needed for AP
+	    		if (((Passage) passages[n]).getLabel() == true) {
+	    			apComponent+=precision;
+	    		}
 	    	}
-	    	qs.setPAt5((double) correct / 5);
 	    	
 	    	//deal with MRR
 	    	double rr=0;
@@ -97,15 +116,26 @@ public class MetricAnnotator extends JCasAnnotator_ImplBase {
 		    	sumRR+=rr; //or should this exclude ones where it's 0? In that case we'd also want the demonitator to reflect this
 	    	}
 	    	qs.setRr(rr);
-			debugBW.write("\n");
+	    	
+	    	//deal with MAP
+	    	double ap = 0;
+	    	if (correct != 0) {
+	    		ap = apComponent / correct;
+	    	}
+	    	qs.setAp(ap);
+	    	sumAP+=ap;
+	    	
+			//debugBW.write("\n");
 	    }	
 
 	    double mrr = sumRR / numQueries;
 	    System.out.println("Mean Reciprocal Rank: " + mrr);
-		debugBW.close();
-	} catch (IOException e) {
+	    double map = sumAP / numQueries;
+	    System.out.println("Mean Average Precision: " + map);
+		//debugBW.close();
+	/*} catch (IOException e) {
 		e.printStackTrace();
-  }
+  }*/
 	}
 	
 }
