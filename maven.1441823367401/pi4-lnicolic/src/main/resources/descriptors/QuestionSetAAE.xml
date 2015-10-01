@@ -15,6 +15,10 @@
     <delegateAnalysisEngine key="ScoreAnnotator">
       <import location="ScoreAnnotator.xml"/>
     </delegateAnalysisEngine>
+  <delegateAnalysisEngine key="MetricAnnotator">
+      <import location="MetricAnnotator.xml"/>
+    
+    </delegateAnalysisEngine>
   </delegateAnalysisEngineSpecifiers>
   <analysisEngineMetaData>
     <name>QuestionSetAAE</name>
@@ -29,6 +33,7 @@
         <node>QuestionAnnotator</node>
         <node>QuestionSetAnnotator</node>
         <node>ScoreAnnotator</node>
+      <node>MetricAnnotator</node>
       </fixedFlow>
     </flowConstraints>
     <fsIndexCollection/>

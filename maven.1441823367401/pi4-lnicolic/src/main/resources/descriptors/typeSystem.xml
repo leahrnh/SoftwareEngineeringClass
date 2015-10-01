@@ -82,6 +82,26 @@
           <rangeTypeName>uima.cas.FSArray</rangeTypeName>
           <elementType>type.Passage</elementType>
         </featureDescription>
+      <featureDescription>
+          <name>pAt1</name>
+          <description>Precision at 1</description>
+          <rangeTypeName>uima.cas.Double</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>pAt5</name>
+          <description>Precision at 5</description>
+          <rangeTypeName>uima.cas.Double</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>rr</name>
+          <description>Reciprocal Rank</description>
+          <rangeTypeName>uima.cas.Double</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>ap</name>
+          <description>Average Precision</description>
+          <rangeTypeName>uima.cas.Double</rangeTypeName>
+        </featureDescription>
       </features>
     </typeDescription>
   </types>

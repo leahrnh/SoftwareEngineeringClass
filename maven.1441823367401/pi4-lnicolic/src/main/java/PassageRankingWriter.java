@@ -57,30 +57,32 @@ public class PassageRankingWriter extends CasConsumer_ImplBase {
 		      throw new ResourceProcessException(e);
 		  }
 		  
-		  FSIterator passageIter = jcas.getAnnotationIndex(Passage.type).iterator();
+		  FSIterator qsIter = jcas.getAnnotationIndex(QuestionSet.type).iterator();
 		  File outFile = null;
 		  DecimalFormat format = new DecimalFormat("0.000");
 		  
 		  //create output file
 		  try {
-			File outputFile = new File(mOutputDir + "/passageRanking.txt");
+			File outputFile = new File(mOutputDir + "/RankingMetrics.csv");
 			FileWriter fw = new FileWriter(outputFile.getAbsoluteFile());
 			BufferedWriter bw = new BufferedWriter(fw);
+			
 
 			// if file doesn't exists, then create it
 			if (!outputFile.exists()) {
 				outputFile.createNewFile();
 			}
 			
-			//process QuestionSets and write passage info to files
-			//maybe this could just be done by iterating over passages? But I don't know if the order would be correct
-			while (passageIter.hasNext()) {  
-				Passage passage = (Passage) passageIter.next();
-				String s = passage.getCoveredText();
-			    s = Pattern.compile(" (1|-1|2) ").matcher(s).replaceFirst(" " + format.format(passage.getScore()) + " ");
+			
+			//write header
+			bw.write("question_id,p_at_1,p_at_5,rr,ap\n");
+			
+			//process QuestionSets and metric passage info to file
+			while (qsIter.hasNext()) {  
+				QuestionSet qs = (QuestionSet) qsIter.next();
+				String s = qs.getQuestion().getId() + "," + format.format(qs.getPAt1()) + "," + format.format(qs.getPAt5()) + ","  + format.format(qs.getRr()) + ",?";
 				bw.write(s+"\n");
 			}
-			
 			bw.close();
 		  } catch (IOException e) {
 				e.printStackTrace();

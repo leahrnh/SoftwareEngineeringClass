@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edu.cmu.cs.lti.f15</groupId>
-	<artifactId>pi4-lnicolic</artifactId>
+	<artifactId>pi5-lnicolic</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>PI3 Template</name>
-	<description>DEIIS template project for PI3</description>
+	<name>PI5 Template</name>
+	<description>PI5 Project</description>
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.uima</groupId>
