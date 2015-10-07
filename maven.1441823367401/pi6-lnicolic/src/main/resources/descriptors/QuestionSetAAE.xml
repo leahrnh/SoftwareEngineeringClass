@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>false</primitive>  
+  <delegateAnalysisEngineSpecifiers>
+    <delegateAnalysisEngine key="PassageAnnotator">
+      <import location="PassageAnnotator.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="QuestionAnnotator">
+      <import location="QuestionAnnotator.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="QuestionSetAnnotator">
+      <import location="QuestionSetAnnotator.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="ScoreAnnotator">
+      <import location="ScoreAnnotator.xml"/>
+    </delegateAnalysisEngine>
+  <delegateAnalysisEngine key="MetricAnnotator">
+      <import location="MetricAnnotator.xml"/>
+    
+    </delegateAnalysisEngine>
+  </delegateAnalysisEngineSpecifiers>
+  <analysisEngineMetaData>
+    <name>QuestionSetAAE</name>
+    <description/>
+    <version>1.0</version>
+    <vendor/>
+    <configurationParameters/>
+    <configurationParameterSettings/>
+    <flowConstraints>
+      <fixedFlow>
+        <node>PassageAnnotator</node>
+        <node>QuestionAnnotator</node>
+        <node>QuestionSetAnnotator</node>
+        <node>ScoreAnnotator</node>
+      <node>MetricAnnotator</node>
+      </fixedFlow>
+    </flowConstraints>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs/>
+        <outputs>
+          <type allAnnotatorFeatures="true">type.QuestionSet</type>
+        </outputs>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+  <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <resourceManagerConfiguration/>
+</analysisEngineDescription>

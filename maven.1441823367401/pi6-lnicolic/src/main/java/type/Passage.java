@@ -1,6 +1,6 @@
 
 
-/* First created by JCasGen Sun Oct 04 16:19:56 EDT 2015 */
+/* First created by JCasGen Wed Sep 23 15:36:34 EDT 2015 */
 package type;
 
 import org.apache.uima.jcas.JCas; 
@@ -10,10 +10,10 @@ import org.apache.uima.jcas.cas.TOP_Type;
 
 
 /** Stores the information of the passage.
- * Updated by JCasGen Mon Oct 05 13:28:26 EDT 2015
- * XML source: /home/junaraki/git/f15-11-791/template-projects/pi6/pi6-andrewid/src/main/resources/descriptors/typeSystem.xml
+ * Updated by JCasGen Wed Sep 30 19:19:10 EDT 2015
+ * XML source: /Users/leah/Tulip/CMU/Fall2015/Software Engineering/SoftwareEngineeringClass/maven.1441823367401/pi4-lnicolic/src/main/resources/descriptors/typeSystem.xml
  * @generated */
-public class Passage extends ComponentAnnotation {
+public class Passage extends ComponentAnnotation implements Comparable {
   /** @generated
    * @ordered 
    */
@@ -76,25 +76,47 @@ public class Passage extends ComponentAnnotation {
  
     
   //*--------------*
-  //* Feature: text
+  //* Feature: questionId
 
-  /** getter for text - gets The passage text extracted from the source document.
+  /** getter for questionId - gets This is the ID of the question it intends to answer to.
    * @generated
    * @return value of the feature 
    */
-  public String getText() {
-    if (Passage_Type.featOkTst && ((Passage_Type)jcasType).casFeat_text == null)
-      jcasType.jcas.throwFeatMissing("text", "type.Passage");
-    return jcasType.ll_cas.ll_getStringValue(addr, ((Passage_Type)jcasType).casFeatCode_text);}
+  public String getQuestionId() {
+    if (Passage_Type.featOkTst && ((Passage_Type)jcasType).casFeat_questionId == null)
+      jcasType.jcas.throwFeatMissing("questionId", "type.Passage");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((Passage_Type)jcasType).casFeatCode_questionId);}
     
-  /** setter for text - sets The passage text extracted from the source document. 
+  /** setter for questionId - sets This is the ID of the question it intends to answer to. 
    * @generated
    * @param v value to set into the feature 
    */
-  public void setText(String v) {
-    if (Passage_Type.featOkTst && ((Passage_Type)jcasType).casFeat_text == null)
-      jcasType.jcas.throwFeatMissing("text", "type.Passage");
-    jcasType.ll_cas.ll_setStringValue(addr, ((Passage_Type)jcasType).casFeatCode_text, v);}    
+  public void setQuestionId(String v) {
+    if (Passage_Type.featOkTst && ((Passage_Type)jcasType).casFeat_questionId == null)
+      jcasType.jcas.throwFeatMissing("questionId", "type.Passage");
+    jcasType.ll_cas.ll_setStringValue(addr, ((Passage_Type)jcasType).casFeatCode_questionId, v);}    
+   
+    
+  //*--------------*
+  //* Feature: sentence
+
+  /** getter for sentence - gets The passage text extracted from the source document.
+   * @generated
+   * @return value of the feature 
+   */
+  public String getSentence() {
+    if (Passage_Type.featOkTst && ((Passage_Type)jcasType).casFeat_sentence == null)
+      jcasType.jcas.throwFeatMissing("sentence", "type.Passage");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((Passage_Type)jcasType).casFeatCode_sentence);}
+    
+  /** setter for sentence - sets The passage text extracted from the source document. 
+   * @generated
+   * @param v value to set into the feature 
+   */
+  public void setSentence(String v) {
+    if (Passage_Type.featOkTst && ((Passage_Type)jcasType).casFeat_sentence == null)
+      jcasType.jcas.throwFeatMissing("sentence", "type.Passage");
+    jcasType.ll_cas.ll_setStringValue(addr, ((Passage_Type)jcasType).casFeatCode_sentence, v);}    
    
     
   //*--------------*
@@ -139,28 +161,15 @@ public class Passage extends ComponentAnnotation {
     if (Passage_Type.featOkTst && ((Passage_Type)jcasType).casFeat_sourceDocId == null)
       jcasType.jcas.throwFeatMissing("sourceDocId", "type.Passage");
     jcasType.ll_cas.ll_setStringValue(addr, ((Passage_Type)jcasType).casFeatCode_sourceDocId, v);}    
-   
-    
-  //*--------------*
-  //* Feature: questionId
-
-  /** getter for questionId - gets This denotes the corresponding question ID.
-   * @generated
-   * @return value of the feature 
-   */
-  public String getQuestionId() {
-    if (Passage_Type.featOkTst && ((Passage_Type)jcasType).casFeat_questionId == null)
-      jcasType.jcas.throwFeatMissing("questionId", "type.Passage");
-    return jcasType.ll_cas.ll_getStringValue(addr, ((Passage_Type)jcasType).casFeatCode_questionId);}
-    
-  /** setter for questionId - sets This denotes the corresponding question ID. 
-   * @generated
-   * @param v value to set into the feature 
-   */
-  public void setQuestionId(String v) {
-    if (Passage_Type.featOkTst && ((Passage_Type)jcasType).casFeat_questionId == null)
-      jcasType.jcas.throwFeatMissing("questionId", "type.Passage");
-    jcasType.ll_cas.ll_setStringValue(addr, ((Passage_Type)jcasType).casFeatCode_questionId, v);}    
+      @Override
+  public int compareTo(Object o) {
+	Passage p2 = (Passage) o;
+	Double scoreDiff = (getScore() - p2.getScore());
+	Double converted = scoreDiff * 1000;
+	int diff = converted.intValue();
+	return diff;
+	}
+  
   }
 
     

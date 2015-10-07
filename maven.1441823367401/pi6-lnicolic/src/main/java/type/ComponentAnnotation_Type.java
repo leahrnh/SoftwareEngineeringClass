@@ -1,5 +1,5 @@
 
-/* First created by JCasGen Sun Oct 04 16:19:56 EDT 2015 */
+/* First created by JCasGen Wed Sep 23 15:36:34 EDT 2015 */
 package type;
 
 import org.apache.uima.jcas.JCas;
@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** A parent annotation which expects individual annotation types to inherit from.
- * Updated by JCasGen Mon Oct 05 13:28:23 EDT 2015
+ * Updated by JCasGen Wed Sep 30 19:19:10 EDT 2015
  * @generated */
 public class ComponentAnnotation_Type extends Annotation_Type {
   /** @generated 

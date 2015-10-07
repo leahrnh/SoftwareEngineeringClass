@@ -3,14 +3,14 @@
     <collectionReader>
         <collectionIterator>
             <descriptor>
-                <import location="questionPassageReaderDescriptor.xml"/>
+                <import location="collectionReader.xml"/>
             </descriptor>
         </collectionIterator>
     </collectionReader>
     <casProcessors casPoolSize="3" processingUnitThreadCount="1">
-    <casProcessor deployment="integrated" name="aaeDescriptor">
+    <casProcessor deployment="integrated" name="QuestionSetAAE">
         <descriptor>
-            <import location="aaeDescriptor.xml"/>
+            <import location="QuestionSetAAE.xml"/>
         </descriptor>
             <deploymentParameters/>
         <errorHandling>
@@ -20,9 +20,9 @@
         </errorHandling>
         <checkpoint batch="10000" time="1000ms"/>
     </casProcessor>
-    <casProcessor deployment="integrated" name="passageRankingWriterDescriptor">
+    <casProcessor deployment="integrated" name="casConsumer">
         <descriptor>
-            <import location="passageRankingWriterDescriptor.xml"/>
+            <import location="PassageRankingWriterConsumer.xml"/>
         </descriptor>
             <deploymentParameters/>
         <errorHandling>

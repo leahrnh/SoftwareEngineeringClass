@@ -1,18 +1,17 @@
 
 
-/* First created by JCasGen Sun Oct 04 16:19:56 EDT 2015 */
+/* First created by JCasGen Wed Sep 23 15:36:34 EDT 2015 */
 package type;
 
 import org.apache.uima.jcas.JCas; 
 import org.apache.uima.jcas.JCasRegistry;
 import org.apache.uima.jcas.cas.TOP_Type;
 
-import org.apache.uima.jcas.cas.FSList;
 
 
 /** Stores the information about a question.
- * Updated by JCasGen Mon Oct 05 13:28:26 EDT 2015
- * XML source: /home/junaraki/git/f15-11-791/template-projects/pi6/pi6-andrewid/src/main/resources/descriptors/typeSystem.xml
+ * Updated by JCasGen Wed Sep 30 19:19:10 EDT 2015
+ * XML source: /Users/leah/Tulip/CMU/Fall2015/Software Engineering/SoftwareEngineeringClass/maven.1441823367401/pi4-lnicolic/src/main/resources/descriptors/typeSystem.xml
  * @generated */
 public class Question extends ComponentAnnotation {
   /** @generated
@@ -118,50 +117,6 @@ public class Question extends ComponentAnnotation {
     if (Question_Type.featOkTst && ((Question_Type)jcasType).casFeat_sentence == null)
       jcasType.jcas.throwFeatMissing("sentence", "type.Question");
     jcasType.ll_cas.ll_setStringValue(addr, ((Question_Type)jcasType).casFeatCode_sentence, v);}    
-   
-    
-  //*--------------*
-  //* Feature: passages
-
-  /** getter for passages - gets Passages associated with this question.
-   * @generated
-   * @return value of the feature 
-   */
-  public FSList getPassages() {
-    if (Question_Type.featOkTst && ((Question_Type)jcasType).casFeat_passages == null)
-      jcasType.jcas.throwFeatMissing("passages", "type.Question");
-    return (FSList)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((Question_Type)jcasType).casFeatCode_passages)));}
-    
-  /** setter for passages - sets Passages associated with this question. 
-   * @generated
-   * @param v value to set into the feature 
-   */
-  public void setPassages(FSList v) {
-    if (Question_Type.featOkTst && ((Question_Type)jcasType).casFeat_passages == null)
-      jcasType.jcas.throwFeatMissing("passages", "type.Question");
-    jcasType.ll_cas.ll_setRefValue(addr, ((Question_Type)jcasType).casFeatCode_passages, jcasType.ll_cas.ll_getFSRef(v));}    
-   
-    
-  //*--------------*
-  //* Feature: measurement
-
-  /** getter for measurement - gets This stores all the measurements related to the question.
-   * @generated
-   * @return value of the feature 
-   */
-  public Measurement getMeasurement() {
-    if (Question_Type.featOkTst && ((Question_Type)jcasType).casFeat_measurement == null)
-      jcasType.jcas.throwFeatMissing("measurement", "type.Question");
-    return (Measurement)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((Question_Type)jcasType).casFeatCode_measurement)));}
-    
-  /** setter for measurement - sets This stores all the measurements related to the question. 
-   * @generated
-   * @param v value to set into the feature 
-   */
-  public void setMeasurement(Measurement v) {
-    if (Question_Type.featOkTst && ((Question_Type)jcasType).casFeat_measurement == null)
-      jcasType.jcas.throwFeatMissing("measurement", "type.Question");
-    jcasType.ll_cas.ll_setRefValue(addr, ((Question_Type)jcasType).casFeatCode_measurement, jcasType.ll_cas.ll_getFSRef(v));}    
   }
 
     

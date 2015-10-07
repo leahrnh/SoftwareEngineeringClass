@@ -1,5 +1,5 @@
 
-/* First created by JCasGen Sun Oct 04 16:19:56 EDT 2015 */
+/* First created by JCasGen Wed Sep 23 15:36:34 EDT 2015 */
 package type;
 
 import org.apache.uima.jcas.JCas;
@@ -13,7 +13,7 @@ import org.apache.uima.cas.impl.FeatureImpl;
 import org.apache.uima.cas.Feature;
 
 /** Stores the information of the passage.
- * Updated by JCasGen Mon Oct 05 13:28:26 EDT 2015
+ * Updated by JCasGen Wed Sep 30 19:19:10 EDT 2015
  * @generated */
 public class Passage_Type extends ComponentAnnotation_Type {
   /** @generated 
@@ -46,26 +46,50 @@ public class Passage_Type extends ComponentAnnotation_Type {
   public final static boolean featOkTst = JCasRegistry.getFeatOkTst("type.Passage");
  
   /** @generated */
-  final Feature casFeat_text;
+  final Feature casFeat_questionId;
   /** @generated */
-  final int     casFeatCode_text;
+  final int     casFeatCode_questionId;
   /** @generated
    * @param addr low level Feature Structure reference
    * @return the feature value 
    */ 
-  public String getText(int addr) {
-        if (featOkTst && casFeat_text == null)
-      jcas.throwFeatMissing("text", "type.Passage");
-    return ll_cas.ll_getStringValue(addr, casFeatCode_text);
+  public String getQuestionId(int addr) {
+        if (featOkTst && casFeat_questionId == null)
+      jcas.throwFeatMissing("questionId", "type.Passage");
+    return ll_cas.ll_getStringValue(addr, casFeatCode_questionId);
   }
   /** @generated
    * @param addr low level Feature Structure reference
    * @param v value to set 
    */    
-  public void setText(int addr, String v) {
-        if (featOkTst && casFeat_text == null)
-      jcas.throwFeatMissing("text", "type.Passage");
-    ll_cas.ll_setStringValue(addr, casFeatCode_text, v);}
+  public void setQuestionId(int addr, String v) {
+        if (featOkTst && casFeat_questionId == null)
+      jcas.throwFeatMissing("questionId", "type.Passage");
+    ll_cas.ll_setStringValue(addr, casFeatCode_questionId, v);}
+    
+  
+ 
+  /** @generated */
+  final Feature casFeat_sentence;
+  /** @generated */
+  final int     casFeatCode_sentence;
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
+  public String getSentence(int addr) {
+        if (featOkTst && casFeat_sentence == null)
+      jcas.throwFeatMissing("sentence", "type.Passage");
+    return ll_cas.ll_getStringValue(addr, casFeatCode_sentence);
+  }
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
+  public void setSentence(int addr, String v) {
+        if (featOkTst && casFeat_sentence == null)
+      jcas.throwFeatMissing("sentence", "type.Passage");
+    ll_cas.ll_setStringValue(addr, casFeatCode_sentence, v);}
     
   
  
@@ -116,30 +140,6 @@ public class Passage_Type extends ComponentAnnotation_Type {
     ll_cas.ll_setStringValue(addr, casFeatCode_sourceDocId, v);}
     
   
- 
-  /** @generated */
-  final Feature casFeat_questionId;
-  /** @generated */
-  final int     casFeatCode_questionId;
-  /** @generated
-   * @param addr low level Feature Structure reference
-   * @return the feature value 
-   */ 
-  public String getQuestionId(int addr) {
-        if (featOkTst && casFeat_questionId == null)
-      jcas.throwFeatMissing("questionId", "type.Passage");
-    return ll_cas.ll_getStringValue(addr, casFeatCode_questionId);
-  }
-  /** @generated
-   * @param addr low level Feature Structure reference
-   * @param v value to set 
-   */    
-  public void setQuestionId(int addr, String v) {
-        if (featOkTst && casFeat_questionId == null)
-      jcas.throwFeatMissing("questionId", "type.Passage");
-    ll_cas.ll_setStringValue(addr, casFeatCode_questionId, v);}
-    
-  
 
 
 
@@ -153,8 +153,12 @@ public class Passage_Type extends ComponentAnnotation_Type {
     casImpl.getFSClassRegistry().addGeneratorForType((TypeImpl)this.casType, getFSGenerator());
 
  
-    casFeat_text = jcas.getRequiredFeatureDE(casType, "text", "uima.cas.String", featOkTst);
-    casFeatCode_text  = (null == casFeat_text) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_text).getCode();
+    casFeat_questionId = jcas.getRequiredFeatureDE(casType, "questionId", "uima.cas.String", featOkTst);
+    casFeatCode_questionId  = (null == casFeat_questionId) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_questionId).getCode();
+
+ 
+    casFeat_sentence = jcas.getRequiredFeatureDE(casType, "sentence", "uima.cas.String", featOkTst);
+    casFeatCode_sentence  = (null == casFeat_sentence) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_sentence).getCode();
 
  
     casFeat_label = jcas.getRequiredFeatureDE(casType, "label", "uima.cas.Boolean", featOkTst);
@@ -163,10 +167,6 @@ public class Passage_Type extends ComponentAnnotation_Type {
  
     casFeat_sourceDocId = jcas.getRequiredFeatureDE(casType, "sourceDocId", "uima.cas.String", featOkTst);
     casFeatCode_sourceDocId  = (null == casFeat_sourceDocId) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_sourceDocId).getCode();
-
- 
-    casFeat_questionId = jcas.getRequiredFeatureDE(casType, "questionId", "uima.cas.String", featOkTst);
-    casFeatCode_questionId  = (null == casFeat_questionId) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_questionId).getCode();
 
   }
 }
