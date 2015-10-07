@@ -6,7 +6,6 @@ package type;
 import org.apache.uima.jcas.JCas; 
 import org.apache.uima.jcas.JCasRegistry;
 import org.apache.uima.jcas.cas.TOP_Type;
-
 import org.apache.uima.jcas.cas.FSArray;
 
 
@@ -14,7 +13,7 @@ import org.apache.uima.jcas.cas.FSArray;
  * Updated by JCasGen Tue Oct 06 22:21:35 EDT 2015
  * XML source: /Users/leah/Tulip/CMU/Fall2015/Software Engineering/SoftwareEngineeringClass/maven.1441823367401/pi6-lnicolic/src/main/resources/descriptors/typeSystem.xml
  * @generated */
-public class QuestionSet extends ComponentAnnotation {
+public class QuestionSet extends ComponentAnnotation implements Comparable{
   /** @generated
    * @ordered 
    */
@@ -161,7 +160,14 @@ public class QuestionSet extends ComponentAnnotation {
   public void setMeasurement(Measurement v) {
     if (QuestionSet_Type.featOkTst && ((QuestionSet_Type)jcasType).casFeat_measurement == null)
       jcasType.jcas.throwFeatMissing("measurement", "type.QuestionSet");
-    jcasType.ll_cas.ll_setRefValue(addr, ((QuestionSet_Type)jcasType).casFeatCode_measurement, jcasType.ll_cas.ll_getFSRef(v));}    
+    jcasType.ll_cas.ll_setRefValue(addr, ((QuestionSet_Type)jcasType).casFeatCode_measurement, jcasType.ll_cas.ll_getFSRef(v));}
+  
+  @Override
+public int compareTo(Object o) {
+QuestionSet qs2 = (QuestionSet) o;
+return Integer.parseInt(this.getQuestion().getId()) - Integer.parseInt(qs2.getQuestion().getId());
+}
+  
   }
 
     
