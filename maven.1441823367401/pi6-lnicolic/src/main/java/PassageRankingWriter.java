@@ -12,6 +12,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.ResourceProcessException;
 
+import type.Measurement;
 import type.QuestionSet;
 
 /**
@@ -55,7 +56,7 @@ public class PassageRankingWriter extends CasConsumer_ImplBase {
 		  
 		  //create output file
 		  try {
-			File outputFile = new File(mOutputDir + "/RankingMetrics.csv");
+			File outputFile = new File(mOutputDir + "/ErrorAnalysis.csv");
 			FileWriter fw = new FileWriter(outputFile.getAbsoluteFile());
 			BufferedWriter bw = new BufferedWriter(fw);
 			
@@ -67,12 +68,29 @@ public class PassageRankingWriter extends CasConsumer_ImplBase {
 			
 			
 			//write header
-			bw.write("question_id,p_at_1,p_at_5,rr,ap\n");
+			bw.write("question_id,tp,fn,fp,precision,recall,f1\n");
 			
 			//process QuestionSets and metric passage info to file
 			while (qsIter.hasNext()) {  
 				QuestionSet qs = (QuestionSet) qsIter.next();
-				String s = qs.getQuestion().getId() + "," + format.format(qs.getPAt1()) + "," + format.format(qs.getPAt5()) + ","  + format.format(qs.getRr()) + "," + format.format(qs.getAp());
+				Measurement m = qs.getMeasurement();
+				
+				//perform additional calculations
+				double precision = (double) m.getTp() / (m.getTp() + m.getFp()); //note: denominator should always be 5
+				int recallDenominator = m.getTp() + m.getFn();
+				double recall = 0.0;
+				if (recallDenominator!=0) {
+					recall = (double) m.getTp() / recallDenominator;
+				}
+				double f1Denominator = precision + recall;
+				double f1 = 0;
+				if (f1Denominator!=0) {
+					f1 = (2 * precision * recall) / f1Denominator;
+				}
+							
+				
+				//String s = qs.getQuestion().getId() + "," + format.format(qs.getPAt1()) + "," + format.format(qs.getPAt5()) + ","  + format.format(qs.getRr()) + "," + format.format(qs.getAp());
+				String s = qs.getQuestion().getId() + "," + m.getTp() + "," + m.getFn() + "," + m.getFp() + "," + precision + "," + recall + "," + f1;
 				bw.write(s+"\n");
 			}
 			bw.close();

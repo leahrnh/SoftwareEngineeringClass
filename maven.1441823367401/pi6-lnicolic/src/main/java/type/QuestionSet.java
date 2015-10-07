@@ -11,8 +11,8 @@ import org.apache.uima.jcas.cas.FSArray;
 
 
 /** A grouping of the Question and Passages associated with a single question ID.
- * Updated by JCasGen Wed Sep 30 19:19:10 EDT 2015
- * XML source: /Users/leah/Tulip/CMU/Fall2015/Software Engineering/SoftwareEngineeringClass/maven.1441823367401/pi4-lnicolic/src/main/resources/descriptors/typeSystem.xml
+ * Updated by JCasGen Tue Oct 06 22:21:35 EDT 2015
+ * XML source: /Users/leah/Tulip/CMU/Fall2015/Software Engineering/SoftwareEngineeringClass/maven.1441823367401/pi6-lnicolic/src/main/resources/descriptors/typeSystem.xml
  * @generated */
 public class QuestionSet extends ComponentAnnotation {
   /** @generated
@@ -143,91 +143,25 @@ public class QuestionSet extends ComponentAnnotation {
    
     
   //*--------------*
-  //* Feature: pAt1
+  //* Feature: measurement
 
-  /** getter for pAt1 - gets Precision at 1
+  /** getter for measurement - gets measurements associated with the QuestionSet
    * @generated
    * @return value of the feature 
    */
-  public double getPAt1() {
-    if (QuestionSet_Type.featOkTst && ((QuestionSet_Type)jcasType).casFeat_pAt1 == null)
-      jcasType.jcas.throwFeatMissing("pAt1", "type.QuestionSet");
-    return jcasType.ll_cas.ll_getDoubleValue(addr, ((QuestionSet_Type)jcasType).casFeatCode_pAt1);}
+  public Measurement getMeasurement() {
+    if (QuestionSet_Type.featOkTst && ((QuestionSet_Type)jcasType).casFeat_measurement == null)
+      jcasType.jcas.throwFeatMissing("measurement", "type.QuestionSet");
+    return (Measurement)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((QuestionSet_Type)jcasType).casFeatCode_measurement)));}
     
-  /** setter for pAt1 - sets Precision at 1 
+  /** setter for measurement - sets measurements associated with the QuestionSet 
    * @generated
    * @param v value to set into the feature 
    */
-  public void setPAt1(double v) {
-    if (QuestionSet_Type.featOkTst && ((QuestionSet_Type)jcasType).casFeat_pAt1 == null)
-      jcasType.jcas.throwFeatMissing("pAt1", "type.QuestionSet");
-    jcasType.ll_cas.ll_setDoubleValue(addr, ((QuestionSet_Type)jcasType).casFeatCode_pAt1, v);}    
-   
-    
-  //*--------------*
-  //* Feature: pAt5
-
-  /** getter for pAt5 - gets Precision at 5
-   * @generated
-   * @return value of the feature 
-   */
-  public double getPAt5() {
-    if (QuestionSet_Type.featOkTst && ((QuestionSet_Type)jcasType).casFeat_pAt5 == null)
-      jcasType.jcas.throwFeatMissing("pAt5", "type.QuestionSet");
-    return jcasType.ll_cas.ll_getDoubleValue(addr, ((QuestionSet_Type)jcasType).casFeatCode_pAt5);}
-    
-  /** setter for pAt5 - sets Precision at 5 
-   * @generated
-   * @param v value to set into the feature 
-   */
-  public void setPAt5(double v) {
-    if (QuestionSet_Type.featOkTst && ((QuestionSet_Type)jcasType).casFeat_pAt5 == null)
-      jcasType.jcas.throwFeatMissing("pAt5", "type.QuestionSet");
-    jcasType.ll_cas.ll_setDoubleValue(addr, ((QuestionSet_Type)jcasType).casFeatCode_pAt5, v);}    
-   
-    
-  //*--------------*
-  //* Feature: rr
-
-  /** getter for rr - gets Reciprocal Rank
-   * @generated
-   * @return value of the feature 
-   */
-  public double getRr() {
-    if (QuestionSet_Type.featOkTst && ((QuestionSet_Type)jcasType).casFeat_rr == null)
-      jcasType.jcas.throwFeatMissing("rr", "type.QuestionSet");
-    return jcasType.ll_cas.ll_getDoubleValue(addr, ((QuestionSet_Type)jcasType).casFeatCode_rr);}
-    
-  /** setter for rr - sets Reciprocal Rank 
-   * @generated
-   * @param v value to set into the feature 
-   */
-  public void setRr(double v) {
-    if (QuestionSet_Type.featOkTst && ((QuestionSet_Type)jcasType).casFeat_rr == null)
-      jcasType.jcas.throwFeatMissing("rr", "type.QuestionSet");
-    jcasType.ll_cas.ll_setDoubleValue(addr, ((QuestionSet_Type)jcasType).casFeatCode_rr, v);}    
-   
-    
-  //*--------------*
-  //* Feature: ap
-
-  /** getter for ap - gets Average Precision
-   * @generated
-   * @return value of the feature 
-   */
-  public double getAp() {
-    if (QuestionSet_Type.featOkTst && ((QuestionSet_Type)jcasType).casFeat_ap == null)
-      jcasType.jcas.throwFeatMissing("ap", "type.QuestionSet");
-    return jcasType.ll_cas.ll_getDoubleValue(addr, ((QuestionSet_Type)jcasType).casFeatCode_ap);}
-    
-  /** setter for ap - sets Average Precision 
-   * @generated
-   * @param v value to set into the feature 
-   */
-  public void setAp(double v) {
-    if (QuestionSet_Type.featOkTst && ((QuestionSet_Type)jcasType).casFeat_ap == null)
-      jcasType.jcas.throwFeatMissing("ap", "type.QuestionSet");
-    jcasType.ll_cas.ll_setDoubleValue(addr, ((QuestionSet_Type)jcasType).casFeatCode_ap, v);}    
+  public void setMeasurement(Measurement v) {
+    if (QuestionSet_Type.featOkTst && ((QuestionSet_Type)jcasType).casFeat_measurement == null)
+      jcasType.jcas.throwFeatMissing("measurement", "type.QuestionSet");
+    jcasType.ll_cas.ll_setRefValue(addr, ((QuestionSet_Type)jcasType).casFeatCode_measurement, jcasType.ll_cas.ll_getFSRef(v));}    
   }
 
     

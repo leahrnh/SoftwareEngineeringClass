@@ -13,7 +13,7 @@ import org.apache.uima.cas.impl.FeatureImpl;
 import org.apache.uima.cas.Feature;
 
 /** A grouping of the Question and Passages associated with a single question ID.
- * Updated by JCasGen Wed Sep 30 19:19:10 EDT 2015
+ * Updated by JCasGen Tue Oct 06 22:21:35 EDT 2015
  * @generated */
 public class QuestionSet_Type extends ComponentAnnotation_Type {
 	
@@ -124,98 +124,26 @@ public class QuestionSet_Type extends ComponentAnnotation_Type {
  
  
   /** @generated */
-  final Feature casFeat_pAt1;
+  final Feature casFeat_measurement;
   /** @generated */
-  final int     casFeatCode_pAt1;
+  final int     casFeatCode_measurement;
   /** @generated
    * @param addr low level Feature Structure reference
    * @return the feature value 
    */ 
-  public double getPAt1(int addr) {
-        if (featOkTst && casFeat_pAt1 == null)
-      jcas.throwFeatMissing("pAt1", "type.QuestionSet");
-    return ll_cas.ll_getDoubleValue(addr, casFeatCode_pAt1);
+  public int getMeasurement(int addr) {
+        if (featOkTst && casFeat_measurement == null)
+      jcas.throwFeatMissing("measurement", "type.QuestionSet");
+    return ll_cas.ll_getRefValue(addr, casFeatCode_measurement);
   }
   /** @generated
    * @param addr low level Feature Structure reference
    * @param v value to set 
    */    
-  public void setPAt1(int addr, double v) {
-        if (featOkTst && casFeat_pAt1 == null)
-      jcas.throwFeatMissing("pAt1", "type.QuestionSet");
-    ll_cas.ll_setDoubleValue(addr, casFeatCode_pAt1, v);}
-    
-  
- 
-  /** @generated */
-  final Feature casFeat_pAt5;
-  /** @generated */
-  final int     casFeatCode_pAt5;
-  /** @generated
-   * @param addr low level Feature Structure reference
-   * @return the feature value 
-   */ 
-  public double getPAt5(int addr) {
-        if (featOkTst && casFeat_pAt5 == null)
-      jcas.throwFeatMissing("pAt5", "type.QuestionSet");
-    return ll_cas.ll_getDoubleValue(addr, casFeatCode_pAt5);
-  }
-  /** @generated
-   * @param addr low level Feature Structure reference
-   * @param v value to set 
-   */    
-  public void setPAt5(int addr, double v) {
-        if (featOkTst && casFeat_pAt5 == null)
-      jcas.throwFeatMissing("pAt5", "type.QuestionSet");
-    ll_cas.ll_setDoubleValue(addr, casFeatCode_pAt5, v);}
-    
-  
- 
-  /** @generated */
-  final Feature casFeat_rr;
-  /** @generated */
-  final int     casFeatCode_rr;
-  /** @generated
-   * @param addr low level Feature Structure reference
-   * @return the feature value 
-   */ 
-  public double getRr(int addr) {
-        if (featOkTst && casFeat_rr == null)
-      jcas.throwFeatMissing("rr", "type.QuestionSet");
-    return ll_cas.ll_getDoubleValue(addr, casFeatCode_rr);
-  }
-  /** @generated
-   * @param addr low level Feature Structure reference
-   * @param v value to set 
-   */    
-  public void setRr(int addr, double v) {
-        if (featOkTst && casFeat_rr == null)
-      jcas.throwFeatMissing("rr", "type.QuestionSet");
-    ll_cas.ll_setDoubleValue(addr, casFeatCode_rr, v);}
-    
-  
- 
-  /** @generated */
-  final Feature casFeat_ap;
-  /** @generated */
-  final int     casFeatCode_ap;
-  /** @generated
-   * @param addr low level Feature Structure reference
-   * @return the feature value 
-   */ 
-  public double getAp(int addr) {
-        if (featOkTst && casFeat_ap == null)
-      jcas.throwFeatMissing("ap", "type.QuestionSet");
-    return ll_cas.ll_getDoubleValue(addr, casFeatCode_ap);
-  }
-  /** @generated
-   * @param addr low level Feature Structure reference
-   * @param v value to set 
-   */    
-  public void setAp(int addr, double v) {
-        if (featOkTst && casFeat_ap == null)
-      jcas.throwFeatMissing("ap", "type.QuestionSet");
-    ll_cas.ll_setDoubleValue(addr, casFeatCode_ap, v);}
+  public void setMeasurement(int addr, int v) {
+        if (featOkTst && casFeat_measurement == null)
+      jcas.throwFeatMissing("measurement", "type.QuestionSet");
+    ll_cas.ll_setRefValue(addr, casFeatCode_measurement, v);}
     
   
 
@@ -239,20 +167,8 @@ public class QuestionSet_Type extends ComponentAnnotation_Type {
     casFeatCode_passages  = (null == casFeat_passages) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_passages).getCode();
 
  
-    casFeat_pAt1 = jcas.getRequiredFeatureDE(casType, "pAt1", "uima.cas.Double", featOkTst);
-    casFeatCode_pAt1  = (null == casFeat_pAt1) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_pAt1).getCode();
-
- 
-    casFeat_pAt5 = jcas.getRequiredFeatureDE(casType, "pAt5", "uima.cas.Double", featOkTst);
-    casFeatCode_pAt5  = (null == casFeat_pAt5) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_pAt5).getCode();
-
- 
-    casFeat_rr = jcas.getRequiredFeatureDE(casType, "rr", "uima.cas.Double", featOkTst);
-    casFeatCode_rr  = (null == casFeat_rr) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_rr).getCode();
-
- 
-    casFeat_ap = jcas.getRequiredFeatureDE(casType, "ap", "uima.cas.Double", featOkTst);
-    casFeatCode_ap  = (null == casFeat_ap) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_ap).getCode();
+    casFeat_measurement = jcas.getRequiredFeatureDE(casType, "measurement", "type.Measurement", featOkTst);
+    casFeatCode_measurement  = (null == casFeat_measurement) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_measurement).getCode();
 
   }
 }

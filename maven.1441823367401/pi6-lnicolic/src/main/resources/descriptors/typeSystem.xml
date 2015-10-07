@@ -83,24 +83,31 @@
           <elementType>type.Passage</elementType>
         </featureDescription>
       <featureDescription>
-          <name>pAt1</name>
-          <description>Precision at 1</description>
-          <rangeTypeName>uima.cas.Double</rangeTypeName>
+          <name>measurement</name>
+          <description>measurements associated with the QuestionSet</description>
+          <rangeTypeName>type.Measurement</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+  <typeDescription>
+      <name>type.Measurement</name>
+      <description>Holds various measurements used to calculate metrics</description>
+      <supertypeName>uima.cas.TOP</supertypeName>
+      <features>
+        <featureDescription>
+          <name>tp</name>
+          <description>True Positive</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
         </featureDescription>
         <featureDescription>
-          <name>pAt5</name>
-          <description>Precision at 5</description>
-          <rangeTypeName>uima.cas.Double</rangeTypeName>
+          <name>fn</name>
+          <description>False Negative</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
         </featureDescription>
         <featureDescription>
-          <name>rr</name>
-          <description>Reciprocal Rank</description>
-          <rangeTypeName>uima.cas.Double</rangeTypeName>
-        </featureDescription>
-        <featureDescription>
-          <name>ap</name>
-          <description>Average Precision</description>
-          <rangeTypeName>uima.cas.Double</rangeTypeName>
+          <name>fp</name>
+          <description>False Positive</description>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
         </featureDescription>
       </features>
     </typeDescription>

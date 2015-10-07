@@ -3,12 +3,14 @@ package annotators;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
+
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.FSIndex;
 import org.apache.uima.cas.FeatureStructure;
 import org.apache.uima.jcas.JCas;
 
+import type.Measurement;
 import type.Passage;
 import type.QuestionSet;
 
@@ -25,10 +27,7 @@ public class MetricAnnotator extends JCasAnnotator_ImplBase {
 	    FSIndex qsIndex = aJCas.getAnnotationIndex(QuestionSet.type);
 	    Iterator qsIter = qsIndex.iterator();
 	    
-	    //initialize mean counters
-	    double sumRR = 0;
-	    double sumAP = 0;
-	    int numQueries = 0;
+	    //for use in averaging
 	    
 	    //try {
 	    //debug file
@@ -44,7 +43,6 @@ public class MetricAnnotator extends JCasAnnotator_ImplBase {
 	    while (qsIter.hasNext()) {
 	    	
 	    	QuestionSet qs = (QuestionSet) qsIter.next();
-	    	numQueries++;
 
 			//debugBW.write(qs.getQuestion().getId());
 
@@ -54,62 +52,33 @@ public class MetricAnnotator extends JCasAnnotator_ImplBase {
 	    	Arrays.sort(passages);
 	    	Collections.reverse(Arrays.asList(passages));
 	    	
-	    	//calculate P@1
-	    	if (((Passage) passages[0]).getLabel()==true) {
-	    		qs.setPAt1(1.0);
-	    	} else {
-	    		qs.setPAt1(0.0);
-	    	}
 	    	
 	    	//iterate over passages to calculate P@5, RR, and AP
-	    	int rrRank = 0;
-	    	int correct = 0;
-	    	double apComponent = 0;
-	    	for (int n=0;n<passages.length;n++) {
+	    	int tp=0;
+	    	int fn=0;
+	    	int fp=0;
+	    	//before cutoff at rank=5
+	    	for (int n=0;n<5;n++) {
 	    		if (((Passage) passages[n]).getLabel() == true) {
-	    			correct++;
-	    			//calculate RR
-	    			if (rrRank==0) {
-	    				rrRank = n+1;
-	    			}
-	    		}
-	    		
-	    		double precision = (double) correct / (n+1);
-	    		
-	    		//calculate P@5
-	    		if (n==4) {
-	    			qs.setPAt5(precision);
-	    		}
-	    		
-	    		//sum needed for AP
+	    			tp++;
+	    		} else {
+	   				fp++;
+	   			}
+	   		}
+	    	
+	    	//after cutoff at rank=5
+	    	for (int n=5;n<passages.length;n++) {
 	    		if (((Passage) passages[n]).getLabel() == true) {
-	    			apComponent+=precision;
-	    		}
+    				fn++;
+    			}
 	    	}
 	    	
-	    	//deal with MRR
-	    	double rr=0;
-	    	if (rrRank!=0) {
-	    		rr = (double) 1 / rrRank;
-		    	sumRR+=rr;
-		    }
-	    	qs.setRr(rr);
-	    	
-	    	//deal with MAP
-	    	double ap = 0;
-	    	if (correct != 0) {
-	    		ap = apComponent / correct;
-	    	}
-	    	qs.setAp(ap);
-	    	sumAP+=ap;
-	    	
-			//debugBW.write("\n");
+	    	Measurement m = new Measurement(aJCas);
+	    	m.setTp(tp);
+	    	m.setFn(fn);
+	    	m.setFp(fp);
+	    	qs.setMeasurement(m);
 	    }	
-
-	    double mrr = sumRR / numQueries;
-	    System.out.println("Mean Reciprocal Rank: " + mrr);
-	    double map = sumAP / numQueries;
-	    System.out.println("Mean Average Precision: " + map);
 		//debugBW.close();
 	/*} catch (IOException e) {
 		e.printStackTrace();
