@@ -86,11 +86,21 @@ public class PassageRankingWriter extends CasConsumer_ImplBase {
     	qs.getPassages().copyToArray(0, passages, 0, qs.getPassages().size());
     	Arrays.sort(passages);
     	Collections.reverse(Arrays.asList(passages));
-    	for (int i=0;i<passages.length;i++) {
+    	for (int i=0;i<5;i++) {
     		Passage p = (Passage) passages[i];
-    		System.out.println(p.getScore() + "     " + p.getLabel() + "     " + p.getSentence());
-    		if (i==4) {
-    			System.out.println("-----threshold-----");
+    		if (p.getLabel()) {
+    			System.out.println(p.getScore() + "     " + p.getLabel() + "     " + p.getSentence());
+    		} else {
+    			System.out.println(p.getScore() + "   **" + p.getLabel() + "**   " + p.getSentence());
+    		}
+    	}
+    	System.out.println("-----threshold-----");
+    	for (int i=5;i<passages.length;i++) {
+    		Passage p = (Passage) passages[i];
+    		if (p.getLabel()) {
+    			System.out.println(p.getScore() + "   **" + p.getLabel() + "**   " + p.getSentence());
+    		} else {
+    			System.out.println(p.getScore() + "     " + p.getLabel() + "     " + p.getSentence());
     		}
     	}
     	System.out.println("\n\n\n");

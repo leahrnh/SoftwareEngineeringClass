@@ -19,6 +19,11 @@
       <import location="MetricAnnotator.xml"/>
     
     </delegateAnalysisEngine>
+  <delegateAnalysisEngine key="PI5MetricAnnotator">
+      <import name="descriptors.PI5MetricAnnotator"/>
+    
+    
+    </delegateAnalysisEngine>
   </delegateAnalysisEngineSpecifiers>
   <analysisEngineMetaData>
     <name>QuestionSetAAE</name>
@@ -34,6 +39,7 @@
         <node>QuestionSetAnnotator</node>
         <node>ScoreAnnotator</node>
       <node>MetricAnnotator</node>
+      <node>PI5MetricAnnotator</node>
       </fixedFlow>
     </flowConstraints>
     <fsIndexCollection/>
